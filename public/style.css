@@ -2,6 +2,13 @@
   display: inline-block
 }
 
+.input-box {
+  width: 100%;
+  border: none;
+  height: 40px;
+  padding-left: 10px;
+}
+
 /* boot strap code*/
 
 body {
@@ -11,9 +18,17 @@ body {
   line-height: 1.5;
   color: #495057;
   text-align: left;
-  background-image: url("img/mountain-day.jpg");
+  background-image: url("img/mountains.jpg");
   height: 100%;
   background-size: cover;
+}
+
+.badge{
+  background-color: #b3def3 !important;
+}
+
+.label-danger {
+  background-color: #d27272 !important;
 }
 
 h1 {
