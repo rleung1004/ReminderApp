@@ -56,7 +56,14 @@
                                               </div>
                                               <div class="widget-subheading"><i><%= reminderItem.description %></i></div>
                                           </div>
-                                          <div class="widget-content-right"><a href=<%= "/reminder/" + reminderItem.id %>>View</a> <button class="border-0 btn-transition btn btn-outline-success"> <i class="fa fa-check"></i></button> <button class="border-0 btn-transition btn btn-outline-danger"> <i class="fa fa-trash"></i> </button> </div>
+                                          <div class="widget-content-right">
+                                                <a href=<%= "/reminder/" + reminderItem.id %>>View</a>
+                                                <button class="border-0 btn-transition btn btn-outline-success"> <i class="fa fa-check"></i></button>
+                                                <form class="deleteForm "method="POST" action=<%= "/reminder/delete/" + reminderItem.id %>>
+                                                    <button type="submit"class="border-0 btn-transition btn btn-outline-danger"> <i class="fa fa-trash"></i> </button>
+                                                  </form> 
+                                                
+                                             </div>
                                       </div>
                                   </div>
                               </li>
