@@ -1,12 +1,17 @@
+/* styles the navbar */
+
+/* makes the navbar background transparent */
 .navbar-default {
     background-color:#ffffff00 !important;
     border: none;
 }
 
+/* makes the reminder pink and visible */
 .navbar-brand {
     color: #f2dede !important;
 }
 
+/* makes the other list items on navbae pink and visible */
 .navbar-nav>li>a {
     color: #f2dede !important;
 }

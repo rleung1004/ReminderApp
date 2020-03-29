@@ -10,18 +10,22 @@
   text-align: center;
 }
 
+/* makes the bottom corners round */
 .d-block {
   border-radius: 0px 0px 20px 20px;
 }
 
+/* makes top borders round */
 div.card-header-tab.card-header {
   border-radius: 20px 20px 0px 0px;
 }
 
+/* makes the add reminder button round */
 .btn.btn-primary {
   border-radius: 7px;
 }
 
+/* makes the scroll area of the box white */
 .scroll-area-sm {
   background-color: #fff;
 }
