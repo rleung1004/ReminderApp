@@ -7,7 +7,25 @@
   border: none;
   height: 40px;
   padding-left: 10px;
+  text-align: center;
 }
+
+.d-block {
+  border-radius: 0px 0px 20px 20px;
+}
+
+div.card-header-tab.card-header {
+  border-radius: 20px 20px 0px 0px;
+}
+
+.btn.btn-primary {
+  border-radius: 7px;
+}
+
+.scroll-area-sm {
+  background-color: #fff;
+}
+
 
 /* boot strap code*/
 
@@ -24,12 +42,16 @@ body {
 }
 
 .badge{
-  background-color: #b3def3 !important;
+  background-color: #f188dd !important;
 }
 
 .label-danger {
-  background-color: #d27272 !important;
+  background-color: #d2727200 !important;
 }
+
+.label-success {
+  background-color: #5cb85c00 !important;
+} 
 
 h1 {
   color: #f2dede;
@@ -85,9 +107,10 @@ i {
 .card-header.card-header-tab .card-header-title {
   display: flex;
   align-items: center;
-  white-space: nowrap;
   font-size: 20px;
-  padding-left: 1%;
+position: relative;
+left: 50%;
+transform: translate(-50%);
 }
 
 .card-header .header-icon {
