@@ -1,6 +1,8 @@
 label {
     display: block;
     font: 1rem 'Fira Sans', sans-serif;
+    color: #f2dede;
+
 }
 
 input,
@@ -9,6 +11,20 @@ label {
 }
 
 .create-container {
+    color: #f2dede !important;
+
+}
+
+.date {
+    color: black;
+}
+
+.date-right {
+    position: absolute;
+    left: 20%;
+}
+
+.form-group {
     color: #f2dede !important;
 
 }
