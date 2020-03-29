@@ -71,6 +71,7 @@ h1 {
   margin-left: 50% !important;
   margin-top: 0% !important;
   transform: translate(-50%);
+  width: 700px;
   
 } 
 
@@ -138,7 +139,7 @@ transform: translate(-50%);
 }
 
 .scroll-area-sm {
-  height: 288px;
+  height: 450px;
   overflow-x: hidden;
 }
 
