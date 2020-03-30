@@ -15,5 +15,23 @@
   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
   crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script>
+      let lat, lon;
+      if ("geolocation" in navigator) {
+          console.log("geolocation available")
+          navigator.geolocation.getCurrentPosition(async position => {
+              lat = position.coords.latitude;
+              lon = position.coords.longitude;
+              console.log(lat.toFixed(2));
+              console.log(lon.toFixed(2));
+              const api_url = `weather/${lat},${lon}`;
+              const fetch_response = await fetch(api_url);
+              const json = await fetch_response.json();
+              console.log(json);
+          });
+      } else {
+          console.log("geolocation available not available")
+      }
+    </script>
   </body>
 </html>

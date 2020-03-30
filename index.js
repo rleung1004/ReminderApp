@@ -5,6 +5,7 @@ const reminderController = require("./controllers/reminder_controller");
 
 
 app.use(express.static(__dirname + "/public"))
+app.use(express.json({limit: '1mb'}));
 
 app.use(express.urlencoded({ extended: false }))
 
@@ -27,6 +28,8 @@ app.post("/reminder/", reminderController.create)
 app.post("/reminder/update/:id", reminderController.update) // suggestion for class: look into put and post
 
 app.post("/reminder/delete/:id", reminderController.delete)
+
+app.get("/weather/:coordinates", reminderController.getWeatherData)
 
 app.listen(3000, function(){
   console.log("Server running. Visit: localhost:3000/reminder in your browser 🚀");

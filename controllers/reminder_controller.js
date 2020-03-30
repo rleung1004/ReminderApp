@@ -1,4 +1,7 @@
+const fetch = require('node-fetch');
 let Database = require("../database");
+let coordinates = {lat: undefined, lon: undefined};
+let weatherData;
 
 let remindersController = {
   list: (req, res) => {
@@ -61,6 +64,30 @@ let remindersController = {
     })
     Database.cindy.reminders.splice(reminderIndex, 1);
     res.redirect('/reminder');
+  },
+
+  receiveCoordinates: (req, res) => {
+      console.log("Received geolocation coordinates.");
+      console.log(req.body);
+      const data = req.body;
+      coordinates.lat = data.lat;
+      coordinates.lon = data.lon;
+      console.log("Coordinates are now set to", coordinates);
+      res.json({
+          status: 'success',
+          latitude: data.lat,
+          longitude: data.lon
+      });
+  },
+
+  getWeatherData: async (req, res) => {
+    const coordinates = req.params.coordinates.split(',');
+    const lat = coordinates[0];
+    const lon = coordinates[1];
+    let api_url = `https://api.darksky.net/forecast/adaec7279bd9fe4d04fac4d6ecd1052b/${lat},${lon}`
+    let fetch_response = await fetch(api_url);
+    weatherData = await fetch_response.json();
+    res.json(weatherData);
   }
 }
 
