@@ -84,7 +84,7 @@ let remindersController = {
 
   // does not work... ask Armaan
   // cannot use browser javascript for server side
-  deleteSelected: (req, res) => {
+ /*  deleteSelected: (req, res) => {
     let check_box_array = document.getElementsByClassName("custom-control-input");
 
     for (i = 0; i < check_box_array.length; i++) {
@@ -94,7 +94,7 @@ let remindersController = {
     }
     res.redirect("/reminder")
   }
-
+ */
 
 }
 

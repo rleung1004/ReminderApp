@@ -53,6 +53,8 @@ body {
   position: absolute;
   right: 20rem;
   bottom: 5rem;
+  width: 20rem;
+  height: 20rem;
 }
 
 .badge{

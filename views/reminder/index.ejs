@@ -110,10 +110,8 @@
           </div>
           <div class="d-block text-right card-footer">
 
-              <!-- a delete selected button             has no functionality yet -->
-              <form class="deleteForm "method="POST" action=<%= "/reminder/deleteSelected/" + reminderItem.id %>>
+              
                 <button type="submit" class="mr-2 btn btn-link btn-sm">Delete Selected</button>
-              </form> 
             
 
             <!-- add a new reminder button          currently only brings user to the vreate.ejs page -->
@@ -125,12 +123,27 @@
 
 
 <div>
-    <button  onclick="background()">Day/Night</button>
 
-
+    <!-- changes the background image from morning to night mountains -->
+    <img id="dayNight" class="night" onclick="background()" src="img/moon.png">
+   
+    <!-- function that changes the background image from night to day -->
   <script>
       function background() {
-        document.body.style.background = "url('img/mountain-day.jpg')";
+          console.log(document.getElementById("dayNight").className)
+          if (document.getElementById("dayNight").className == "night") {
+            document.body.style.background = "url('img/mountain-day.jpg')";
+            document.body.style.backgroundSize = "cover";
+            document.getElementById("dayNight").src = "img/sun.png";
+            document.getElementById("dayNight").className = "sun";
+          }
+          else {
+            document.body.style.background = "url('img/mountains.jpg')";
+            document.body.style.backgroundSize = "cover";
+            document.getElementById("dayNight").src = "img/moon.png";
+            document.getElementById("dayNight").className = "night";
+          }
+        
       }
       
 
