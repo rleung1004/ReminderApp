@@ -31,15 +31,9 @@ app.post("/reminder/delete/:id", reminderController.delete)
 app.post("/reminder/complete/:id", reminderController.complete)
 
 
-// does not work ... ask Armaan
-app.post("/reminder/background", reminderController.background)
+/// does not work... ask Armaan
+app.post("/reminder/deleteSelected/:id", reminderController.deleteSelected)
 
-// does not work...      ask Armaan
-app.get("/landingPage/index", reminderController.landing)
-
-/* /// does not work... ask Armaan
-app.post("/reminder/deletSelected:id", reminderController.deleteSelected)
- */
 app.listen(3000, function(){
   console.log("Server running. Visit: localhost:3000/reminder in your browser 🚀");
 })

@@ -111,7 +111,10 @@
           <div class="d-block text-right card-footer">
 
               <!-- a delete selected button             has no functionality yet -->
-            <button class="mr-2 btn btn-link btn-sm">Delete Selected</button>
+              <form class="deleteForm "method="POST" action=<%= "/reminder/deleteSelected/" + reminderItem.id %>>
+                <button type="submit" class="mr-2 btn btn-link btn-sm">Delete Selected</button>
+              </form> 
+            
 
             <!-- add a new reminder button          currently only brings user to the vreate.ejs page -->
             <a href="/reminder/new"><button class="btn btn-primary">Add Reminder</button></a>
@@ -122,8 +125,15 @@
 
 
 <div>
-  <form id="dayNight" method="POST" action=<%= "/reminder/background" %>>
-    <button type="submit">Day/Night</button>
-  </form>
+    <button  onclick="background()">Day/Night</button>
+
+
+  <script>
+      function background() {
+        document.body.style.background = "url('img/mountain-day.jpg')";
+      }
+      
+
+  </script>
   <!-- <img id="dayNight" src="/public/img/sun.png"> -->
 </div>

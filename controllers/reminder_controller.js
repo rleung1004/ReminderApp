@@ -82,30 +82,19 @@ let remindersController = {
   },
 
 
-  // does not work... ask armaan
-  background: (req, res) => {
-    page = req.body
-    page.style.background = url("../public/img/mountain-day.jpg");
-    res.redirect("/reminder");
-  },
-
-
   // does not work... ask Armaan
-  landing: (req, res) => {
-    res.render("/landingPage/index");
-  }
-
-  /* // does not work... ask Armaan
+  // cannot use browser javascript for server side
   deleteSelected: (req, res) => {
     let check_box_array = document.getElementsByClassName("custom-control-input");
+
     for (i = 0; i < check_box_array.length; i++) {
-      if (check_box_array[i] = true){
-        remindersController.delete
+      if (check_box_array[i].checked){
+        this.delete(req, res);
       }
     }
     res.redirect("/reminder")
   }
- */
+
 
 }
 
