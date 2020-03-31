@@ -85,9 +85,9 @@ let remindersController = {
   // does not work... ask Armaan
   landing: (req, res) => {
     res.render("/landingPage/index");
-  },
+  }
 
-  // does not work... ask Armaan
+  /* // does not work... ask Armaan
   deleteSelected: (req, res) => {
     let check_box_array = document.getElementsByClassName("custom-control-input");
     for (i = 0; i < check_box_array.length; i++) {
@@ -97,7 +97,7 @@ let remindersController = {
     }
     res.redirect("/reminder")
   }
-
+ */
 
 }
 
