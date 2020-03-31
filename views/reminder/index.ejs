@@ -1,5 +1,5 @@
-<div class="container">
-  <h1 class="page-header">Reminders</h1>
+<!-- <div class="container">
+  <h1 class="page-header">REMINDERS</h1>
 
 <ul class="list-group">
   <% reminders.forEach(function (reminderItem) { %>
@@ -17,4 +17,135 @@
   <% }) %>
 </ul>
 
+</div> -->
+
+
+<script src="https://use.fontawesome.com/41dd587675.js"></script>
+
+<!-- boot strap code -->
+
+<div class="row d-flex justify-content-center container">
+  <div class="box">
+      <div class="card-hover-shadow-2x mb-3 card">
+          <div class="card-header-tab card-header">
+
+            <!-- the header at the top of the box -->
+              <div class="card-header-title font-size-lg text-capitalize font-weight-normal">&nbsp;Reminders</div>
+          </div>
+          <div class="scroll-area-sm">
+
+            <!-- quick add reminder box               curently has no functionality -->
+            <input type="text" placeholder="Quick add" class="input-box">
+
+
+              <perfect-scrollbar class="ps-show-limits">
+                  <div style="position: static;" class="ps ps--active-y">
+                      <div class="ps-content">
+
+
+                        <!-- the unordered list starts here -->
+                          <ul class=" list-group list-group-flush">
+
+
+                            <!-- need to add tags here -->
+                            <!-- the new reminder items will be generated to the box by this code-->
+                            <% reminders.forEach(function (reminderItem) { %>
+                              <li class="list-group-item">
+                                  <div class="todo-indicator bg-warning"></div>
+                                  <div class="widget-content p-0">
+                                      <div class="widget-content-wrapper">
+                                          <div class="widget-content-left mr-2">
+                                              <div class="custom-checkbox custom-control"> <input class="custom-control-input" id="exampleCustomCheckbox12" type="checkbox"><label class="custom-control-label" for="exampleCustomCheckbox12">&nbsp;</label> </div>
+                                          </div>
+                                          <div class="widget-content-left">
+
+                                            <!-- the item title will appear here -->
+                                              <div class="widget-heading"><%= reminderItem.title %>: <div class="badge badge-danger ml-2">
+
+                                                <!-- checked to see if the reminder has been completed -->
+                                                <% if (reminderItem.completed == true) { %>
+
+                                                    <!-- if complete show bagde Complete -->
+                                                  <span class="label label-success">Complete</span>
+
+                                                <% } else if (reminderItem.completed == false) { %>
+
+                                                    <!-- if incomplete or false show Not Complete -->
+                                                  <span class="label label-danger">Not Complete</span>
+
+                                                <% } %></div>
+
+                                                <!-- shows the item description User input -->
+                                              </div>
+                                              <div class="widget-subheading"><i><%= reminderItem.description %></i></div>
+                                              <div><b>Remind Me: </b><%= reminderItem.remindDate %></div>
+                                          </div>
+                                          
+                                          <div class="widget-content-right">
+
+                                              <!-- view is linked to single-reminder.ejs to view all reminder details -->
+                                                <a href=<%= "/reminder/" + reminderItem.id %>>View</a>
+
+                                                <!-- the green check box              has functionality -->
+                                                <form class="completeForm" method="POST" action=<%= "/reminder/complete/" + reminderItem.id %>>
+                                                  <button class="border-0 btn-transition btn btn-outline-success"> <i class="fa fa-check"></i></button>
+                                                </form>
+                                               
+
+                                                <!-- the red delete box        has functionality -->
+                                                <form class="deleteForm "method="POST" action=<%= "/reminder/delete/" + reminderItem.id %>>
+                                                    <button type="submit"class="border-0 btn-transition btn btn-outline-danger"> <i class="fa fa-trash"></i> </button>
+                                                  </form> 
+                                             </div>
+                                      </div>
+                                  </div>
+                              </li>
+                              <% }) %>
+                          </ul>
+
+
+                      </div>
+                  </div>
+              </perfect-scrollbar>
+          </div>
+          <div class="d-block text-right card-footer">
+
+              
+                <button type="submit" class="mr-2 btn btn-link btn-sm">Delete Selected</button>
+            
+
+            <!-- add a new reminder button          currently only brings user to the vreate.ejs page -->
+            <a href="/reminder/new"><button class="btn btn-primary">Add Reminder</button></a>
+        </div>
+      </div>
+  </div>
+</div>
+
+
+<div>
+
+    <!-- changes the background image from morning to night mountains -->
+    <img id="dayNight" class="night" onclick="background()" src="img/moon.png">
+   
+    <!-- function that changes the background image from night to day -->
+  <script>
+      function background() {
+          console.log(document.getElementById("dayNight").className)
+          if (document.getElementById("dayNight").className == "night") {
+            document.body.style.background = "url('img/mountain-day.jpg')";
+            document.body.style.backgroundSize = "cover";
+            document.getElementById("dayNight").src = "img/sun.png";
+            document.getElementById("dayNight").className = "sun";
+          }
+          else {
+            document.body.style.background = "url('img/mountains.jpg')";
+            document.body.style.backgroundSize = "cover";
+            document.getElementById("dayNight").src = "img/moon.png";
+            document.getElementById("dayNight").className = "night";
+          };
+        
+      };
+      
+  </script>
+  
 </div>

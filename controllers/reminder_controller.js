@@ -21,11 +21,13 @@ let remindersController = {
     }
   },
 
+  // added remind date
   create: (req, res) => {
     let reminder = {
       id: Database.cindy.reminders.length+1,
       title: req.body.title,
       description: req.body.description,
+      remindDate: req.body.remindDate,
       completed: false
     }
     Database.cindy.reminders.push(reminder);
@@ -47,6 +49,7 @@ let remindersController = {
       if(reminder.id == reminderToFind) {
         reminder.title = req.body.title,
         reminder.description = req.body.description,
+        reminder.remindDate = req.body.remindDate,
         // Why do you think I had to do req.body.completed == "true" below?
         reminder.completed = req.body.completed == "true" 
       }
@@ -61,7 +64,39 @@ let remindersController = {
     })
     Database.cindy.reminders.splice(reminderIndex, 1);
     res.redirect('/reminder');
+  },
+
+  complete: (req, res) => {
+    let reminderToFind = req.params.id;
+    let searchResult = Database.cindy.reminders.find(function(reminder) {
+      if (reminder.id == reminderToFind) {
+        if (reminder.completed == true) {
+          reminder.completed = false;
+        }
+        else {
+          reminder.completed = true;
+        };
+        res.redirect("/reminder");
+      }
+    })
+  },
+
+
+  // does not work... ask Armaan
+  // cannot use browser javascript for server side
+ /*  deleteSelected: (req, res) => {
+    let check_box_array = document.getElementsByClassName("custom-control-input");
+
+    for (i = 0; i < check_box_array.length; i++) {
+      if (check_box_array[i].checked){
+        this.delete(req, res);
+      }
+    }
+    res.redirect("/reminder")
   }
+ */
+
 }
+
 
 module.exports = remindersController

@@ -28,6 +28,12 @@ app.post("/reminder/update/:id", reminderController.update) // suggestion for cl
 
 app.post("/reminder/delete/:id", reminderController.delete)
 
+app.post("/reminder/complete/:id", reminderController.complete)
+
+/* /// does not work... ask Armaan
+app.post("/reminder/deleteSelected/:id", reminderController.deleteSelected) */
+
 app.listen(3000, function(){
   console.log("Server running. Visit: localhost:3000/reminder in your browser 🚀");
 })
+

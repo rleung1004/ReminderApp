@@ -1,13 +1,25 @@
 <div class="container">
-  <form action="/reminder" method="POST">
-    <div class="form-group">
-      <label for="title">Title</label>
-      <input type="text" class="form-control" id="titleInput" placeholder="Title" name="title">
-    </div>
-    <div class="form-group">
-      <label for="description">Description</label>
-      <textarea class="form-control" id="descriptionInput" rows="3" placeholder="Description" name="description"></textarea>
-    </div>
-    <button type="submit" class="btn btn-default">Submit</button>
-  </form>
+  <div class="create-container">
+    <form action="/reminder" method="POST">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" id="titleInput" placeholder="Title" name="title">
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea class="form-control" id="descriptionInput" rows="3" placeholder="Description" name="description"></textarea>
+      </div>
+
+      <!-- a date selector connected-->
+      <div>
+        <label for="remindDate">Remind Date:</label>
+  
+        <input class="date" type="date" id="remindDate" name="remindDate"
+                value="2020-03-28"
+                min="2019-01-01" max="2023-12-31">
+  
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+  </div>
 </div>

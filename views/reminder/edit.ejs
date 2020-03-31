@@ -10,6 +10,16 @@
       <textarea class="form-control" id="descriptionInput" rows="3" placeholder="Description" name="description"><%= reminderItem.description %></textarea>
     </div>
 
+    <!-- a date selector            not connected to anything yet       need to connect to ejs -->
+    <div class="date-right">
+      <label for="remindDate">Remind Date:</label>
+
+      <input class="date" type="date" id="remindDate" name="remindDate"
+              value="2020-03-28"
+              min="2019-01-01" max="2023-12-31">
+
+    </div>
+    
     <div class="form-group">
       <label for="completed">Completed</label>
       <div class="radio">
@@ -22,6 +32,7 @@
           True
         </label>
       </div>
+
       <div class="radio">
         <label>
           <% if (reminderItem.completed == false) { %>
