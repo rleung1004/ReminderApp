@@ -86,10 +86,13 @@
                                                 <a href=<%= "/reminder/" + reminderItem.id %>>View</a>
 
                                                 <!-- the green check box              does not have functionality yet -->
-                                                <button class="border-0 btn-transition btn btn-outline-success"> <i class="fa fa-check"></i></button>
+                                                <form class="completeForm" method="POST" action=<%= "/reminder/complete/" + reminderItem.id %>>
+                                                  <button class="border-0 btn-transition btn btn-outline-success"> <i class="fa fa-check"></i></button>
+                                                </form>
+                                               
 
                                                 <!-- the red delete box        has functionality -->
-                                                <form class="deleteForm "method="POST" action=<%= "/reminder/delete/" + reminderItem.id %>>
+                                                <form class="deleteForm "method="PUT" action=<%= "/reminder/delete/" + reminderItem.id %>>
                                                     <button type="submit"class="border-0 btn-transition btn btn-outline-danger"> <i class="fa fa-trash"></i> </button>
                                                   </form> 
                                              </div>

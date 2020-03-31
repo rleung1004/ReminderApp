@@ -61,7 +61,25 @@ let remindersController = {
     })
     Database.cindy.reminders.splice(reminderIndex, 1);
     res.redirect('/reminder');
+  },
+
+  complete: (req, res) => {
+    let reminderToFind = req.params.id;
+    let searchResult = Database.cindy.reminders.find(function(reminder) {
+      if (reminder.id == reminderToFind) {
+        if (reminder.completed == true) {
+          reminder.completed = false;
+        }
+        else {
+          reminder.completed = true;
+        };
+        res.redirect("/reminder");
+      }
+    })
   }
+
+
 }
+
 
 module.exports = remindersController
