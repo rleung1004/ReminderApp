@@ -30,6 +30,10 @@ app.post("/reminder/delete/:id", reminderController.delete)
 
 app.post("/reminder/complete/:id", reminderController.complete)
 
+
+// does not work ... ask Armaan
+app.post("/reminder/background", reminderController.background)
+
 // does not work...      ask Armaan
 app.get("/landingPage/index", reminderController.landing)
 

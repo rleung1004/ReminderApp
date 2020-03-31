@@ -49,6 +49,12 @@ body {
   background-size: cover;
 }
 
+#dayNight {
+  position: absolute;
+  right: 20rem;
+  bottom: 5rem;
+}
+
 .badge{
   background-color: #f188dd !important;
 }
