@@ -78,6 +78,7 @@
                                                 <!-- shows the item description User input -->
                                               </div>
                                               <div class="widget-subheading"><i><%= reminderItem.description %></i></div>
+                                              <div><b>Date: </b><%= reminderItem.remindDate %></div>
                                           </div>
                                           
                                           <div class="widget-content-right">
@@ -85,7 +86,7 @@
                                               <!-- view is linked to single-reminder.ejs to view all reminder details -->
                                                 <a href=<%= "/reminder/" + reminderItem.id %>>View</a>
 
-                                                <!-- the green check box              does not have functionality yet -->
+                                                <!-- the green check box              has functionality -->
                                                 <form class="completeForm" method="POST" action=<%= "/reminder/complete/" + reminderItem.id %>>
                                                   <button class="border-0 btn-transition btn btn-outline-success"> <i class="fa fa-check"></i></button>
                                                 </form>
