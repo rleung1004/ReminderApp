@@ -81,8 +81,11 @@ let remindersController = {
     })
   },
 
+
+  // does not work... ask armaan
   background: (req, res) => {
-    req.body.style.background = url("../public/img/mountain-day.jpg");
+    page = req.body
+    page.style.background = url("../public/img/mountain-day.jpg");
     res.redirect("/reminder");
   },
 
