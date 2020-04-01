@@ -20,11 +20,15 @@ label {
 }
 
 .date-right {
-    position: absolute;
-    left: 20%;
+    position: relative;
+    left: 20em;
 }
 
 .form-group {
     color: #f2dede !important;
 
+}
+
+.checkbox, .radio {
+    width: 50px;
 }
