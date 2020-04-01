@@ -52,8 +52,8 @@ body {
 
 #dayNight {
   position: absolute;
-  right: 20rem;
-  bottom: 5rem;
+  right: 20px;
+  bottom: 5px;
   width: 20rem;
   height: 20rem;
 }
