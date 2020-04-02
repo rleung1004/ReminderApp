@@ -30,6 +30,9 @@ app.post("/reminder/delete/:id", reminderController.delete)
 
 app.post("/reminder/complete/:id", reminderController.complete)
 
+// is not connected to anything
+/* app.get("/reminder/", reminderController.background) */
+
 /* /// does not work... ask Armaan
 app.post("/reminder/deleteSelected/:id", reminderController.deleteSelected) */
 
