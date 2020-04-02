@@ -2,7 +2,7 @@ let Database = require("../database");
 
 let remindersController = {
   list: (req, res) => {
-    res.render('reminder/index', { reminders: Database.cindy.reminders })
+    res.render('reminder/index', { reminders: Database.cindy.reminders, mode: Database.cindy.mode })
   },
 
   new: (req, res) => {
@@ -23,11 +23,22 @@ let remindersController = {
 
   // added remind date
   create: (req, res) => {
+    function currentDate() {
+      let date = Date.now();
+        let date_object = new Date(date);
+        let day = ("0" + date_object.getDate()).slice(-2);
+        let month = ("0" + (date_object.getMonth() + 1)).slice(-2);
+        let year = date_object.getFullYear();
+        return year + "-" + month + "-" + day;}
+    
+        let current = currentDate();
+
     let reminder = {
       id: Database.cindy.reminders.length+1,
       title: req.body.title,
       description: req.body.description,
       remindDate: req.body.remindDate,
+      currentDate: req.body.remindDate == current,
       completed: false
     }
     Database.cindy.reminders.push(reminder);
@@ -81,15 +92,25 @@ let remindersController = {
     })
   },
 
+/*   background: (req, res) => {
+    let mode = Database.cindy.mode;
+    if (req.body.className == "night") {
+        mode = false;
+    }
+    else {
+      mode = true;
+    }
+    res.render("/reminder");
+  },
+   */
 
-  // does not work... ask Armaan
-  // cannot use browser javascript for server side
- /*  deleteSelected: (req, res) => {
+
+  /* // does not work... ask Armaan
+  deleteSelected: (req, res) => {
     let check_box_array = document.getElementsByClassName("custom-control-input");
-
     for (i = 0; i < check_box_array.length; i++) {
-      if (check_box_array[i].checked){
-        this.delete(req, res);
+      if (check_box_array[i] = true){
+        remindersController.delete
       }
     }
     res.redirect("/reminder")

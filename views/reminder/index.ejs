@@ -19,6 +19,7 @@
 
 </div> -->
 
+<body class="night">
 
 <script src="https://use.fontawesome.com/41dd587675.js"></script>
 
@@ -33,9 +34,6 @@
               <div class="card-header-title font-size-lg text-capitalize font-weight-normal">&nbsp;Reminders</div>
           </div>
           <div class="scroll-area-sm">
-
-            <!-- quick add reminder box               curently has no functionality -->
-            <input type="text" placeholder="Quick add" class="input-box">
 
 
               <perfect-scrollbar class="ps-show-limits">
@@ -78,7 +76,7 @@
                                                 <!-- shows the item description User input -->
                                               </div>
                                               <div class="widget-subheading"><i><%= reminderItem.description %></i></div>
-                                              <div><b>Remind Me: </b><%= reminderItem.remindDate %></div>
+                                              <div><b>Date: </b><%= reminderItem.remindDate %></div>
                                           </div>
                                           
                                           <div class="widget-content-right">
@@ -99,6 +97,17 @@
                                              </div>
                                       </div>
                                   </div>
+
+
+                                  <!-- if the remind date is the same as the current date an alert box pops up with the reminder title -->
+                                  <% if (reminderItem.currentDate && !reminderItem.completed) { %>
+                                    <script>
+                                      alert("<%= reminderItem.title %> is happening today!")
+                                    </script>
+
+                                <% } %>
+
+
                               </li>
                               <% }) %>
                           </ul>
@@ -124,6 +133,31 @@
 
 <div>
 
+  <!-- tried to write code that will change the background image for all web pages and have it saved in the user data base -->
+<!-- 
+  <% if (mode == false) { %>
+    <img id="dayNight" onclick="day()" src="img/moon.png">
+    <script>
+      function day() {
+            document.body.className = "day";
+            location.reload();
+        };
+    </script>
+  <% } else { %>
+
+    <img id="dayNight" onclick="night()" src="img/sun.png">
+    <script>
+      function night() {
+            document.body.className = "night";
+            location.reload();
+        };
+    </script>
+  
+  <% } %>
+ -->
+
+
+  
     <!-- changes the background image from morning to night mountains -->
     <img id="dayNight" class="night" onclick="background()" src="img/moon.png">
    
@@ -142,10 +176,16 @@
             document.body.style.backgroundSize = "cover";
             document.getElementById("dayNight").src = "img/moon.png";
             document.getElementById("dayNight").className = "night";
-          };
+          }
         
-      };
+      }
       
   </script>
   
+
+
+
+  
 </div>
+
+</body>
