@@ -19,7 +19,7 @@
 
 </div> -->
 
-<body class="night">
+<body class="day">
 
 <script src="https://use.fontawesome.com/41dd587675.js"></script>
 
@@ -133,55 +133,35 @@
 
 <div>
 
-  <!-- tried to write code that will change the background image for all web pages and have it saved in the user data base -->
-<!-- 
-  <% if (mode == false) { %>
-    <img id="dayNight" onclick="day()" src="img/moon.png">
-    <script>
-      function day() {
-            document.body.className = "day";
-            location.reload();
-        };
-    </script>
-  <% } else { %>
 
-    <img id="dayNight" onclick="night()" src="img/sun.png">
-    <script>
-      function night() {
-            document.body.className = "night";
-            location.reload();
-        };
-    </script>
-  
-  <% } %>
- -->
 
 
   
     <!-- changes the background image from morning to night mountains -->
-    <img id="dayNight" class="night" onclick="background()" src="img/moon.png">
+   <!--  <img id="dayNight"  onclick="background()" src="img/sun.png"> -->
    
     <!-- function that changes the background image from night to day -->
-  <script>
+<!--   <script>
       function background() {
-          console.log(document.getElementById("dayNight").className)
-          if (document.getElementById("dayNight").className == "night") {
-            document.body.style.background = "url('img/mountain-day.jpg')";
+          if (document.body.className == "night") {
+            localStorage.setItem("background", "img/sun.png")
             document.body.style.backgroundSize = "cover";
+            document.body.className = "day";
             document.getElementById("dayNight").src = "img/sun.png";
-            document.getElementById("dayNight").className = "sun";
+           
           }
           else {
-            document.body.style.background = "url('img/mountains.jpg')";
+            localStorage.setItem("background", "img/moon.png")
             document.body.style.backgroundSize = "cover";
+            document.body.className = "night";
             document.getElementById("dayNight").src = "img/moon.png";
-            document.getElementById("dayNight").className = "night";
+            
           }
         
       }
       
   </script>
-  
+   -->
 
 
 

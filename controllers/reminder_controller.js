@@ -1,4 +1,5 @@
 let Database = require("../database");
+let currentDate = require("../utility/handyFunctions");
 
 let remindersController = {
   list: (req, res) => {
@@ -23,15 +24,7 @@ let remindersController = {
 
   // added remind date
   create: (req, res) => {
-    function currentDate() {
-      let date = Date.now();
-        let date_object = new Date(date);
-        let day = ("0" + date_object.getDate()).slice(-2);
-        let month = ("0" + (date_object.getMonth() + 1)).slice(-2);
-        let year = date_object.getFullYear();
-        return year + "-" + month + "-" + day;}
-    
-        let current = currentDate();
+    let current = currentDate();
 
     let reminder = {
       id: Database.cindy.reminders.length+1,
@@ -92,20 +85,8 @@ let remindersController = {
     })
   },
 
-/*   background: (req, res) => {
-    let mode = Database.cindy.mode;
-    if (req.body.className == "night") {
-        mode = false;
-    }
-    else {
-      mode = true;
-    }
-    res.render("/reminder");
-  },
-   */
-
-
-  /* // does not work... ask Armaan
+/* 
+  // does not work... ask Armaan
   deleteSelected: (req, res) => {
     let check_box_array = document.getElementsByClassName("custom-control-input");
     for (i = 0; i < check_box_array.length; i++) {
@@ -114,8 +95,8 @@ let remindersController = {
       }
     }
     res.redirect("/reminder")
-  }
- */
+  } */
+
 
 }
 

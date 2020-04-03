@@ -17,5 +17,45 @@
   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
   crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+   
+    <img id="dayNight"  onclick="background()" src="img/sun.png">
+   <script>
+      if (localStorage.getItem("background") == null) {
+        localStorage.setItem("background", "img/sun.png");
+      }
+
+      if(localStorage.getItem("background") == "img/sun.png") {
+        document.body.className = "day";
+        document.getElementById("dayNight").src = "/img/sun.png";
+  
+        
+      } else {
+        document.body.className = "night"
+        document.getElementById("dayNight").src = "/img/moon.png";
+      }
+    </script>
   </body>
 </html>
+
+   
+    <!-- function that changes the background image from night to day -->
+  <script>
+      function background() {
+          if (document.body.className == "night") {
+            localStorage.setItem("background", "img/sun.png")
+            document.body.style.backgroundSize = "cover";
+            document.body.className = "day";
+            document.getElementById("dayNight").src = "/img/sun.png";
+          }
+          else {
+            localStorage.setItem("background", "img/moon.png")
+            document.body.style.backgroundSize = "cover";
+            document.body.className = "night"
+            document.getElementById("dayNight").src = "/img/moon.png";
+
+            
+          }
+        
+      }
+      
+  </script>

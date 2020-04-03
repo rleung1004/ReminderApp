@@ -1,7 +1,6 @@
 let Database = {
     cindy: {
-        reminders: [],
-        mode: false
+        reminders: []
         
     },
     alex: {
