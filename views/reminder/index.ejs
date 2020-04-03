@@ -101,8 +101,13 @@
 
                                   <!-- if the remind date is the same as the current date an alert box pops up with the reminder title -->
                                   <% if (reminderItem.currentDate && !reminderItem.completed) { %>
+                                    
                                     <script>
-                                      alert("<%= reminderItem.title %> is happening today!")
+
+                                      setTimeout(function () {
+                                        alert("<%= reminderItem.title %> is happening today!")
+                                      }, 1000)
+                                      
                                     </script>
 
                                 <% } %>
@@ -133,35 +138,6 @@
 
 <div>
 
-
-
-
-  
-    <!-- changes the background image from morning to night mountains -->
-   <!--  <img id="dayNight"  onclick="background()" src="img/sun.png"> -->
-   
-    <!-- function that changes the background image from night to day -->
-<!--   <script>
-      function background() {
-          if (document.body.className == "night") {
-            localStorage.setItem("background", "img/sun.png")
-            document.body.style.backgroundSize = "cover";
-            document.body.className = "day";
-            document.getElementById("dayNight").src = "img/sun.png";
-           
-          }
-          else {
-            localStorage.setItem("background", "img/moon.png")
-            document.body.style.backgroundSize = "cover";
-            document.body.className = "night";
-            document.getElementById("dayNight").src = "img/moon.png";
-            
-          }
-        
-      }
-      
-  </script>
-   -->
 
 
 
