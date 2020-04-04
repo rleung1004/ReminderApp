@@ -22,6 +22,16 @@ let remindersController = {
     }
   },
 
+  download: (req, res) => {
+    let reminderToFind = req.params.id;
+    let searchResult = Database.cindy.reminders.find(function(reminder) {
+      return reminder.id == reminderToFind;
+    })
+    var fs = require('fs');
+    fs.writeFile("test.txt", Database.cindy, function(err){console.log(err)});
+    res.download("test.txt",filename="reminders.txt");
+  },
+  
   // added remind date
   create: (req, res) => {
     let current = currentDate();

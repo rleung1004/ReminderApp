@@ -22,6 +22,8 @@ app.get("/reminder/:id", reminderController.listOne)
 
 app.get("/reminder/:id/edit", reminderController.edit)
 
+app.get("/reminder/:id/download", reminderController.download)
+
 app.post("/reminder/", reminderController.create)
 
 app.post("/reminder/update/:id", reminderController.update) // suggestion for class: look into put and post
