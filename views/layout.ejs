@@ -21,10 +21,10 @@
     <img id="dayNight"  onclick="background()" src="img/sun.png">
    <script>
       if (localStorage.getItem("background") == null) {
-        localStorage.setItem("background", "img/sun.png");
+        localStorage.setItem("background", "day");
       }
 
-      if(localStorage.getItem("background") == "img/sun.png") {
+      if(localStorage.getItem("background") == "day") {
         document.body.className = "day";
         document.getElementById("dayNight").src = "/img/sun.png";
   
@@ -42,13 +42,13 @@
   <script>
       function background() {
           if (document.body.className == "night") {
-            localStorage.setItem("background", "img/sun.png")
+            localStorage.setItem("background", "day")
             document.body.style.backgroundSize = "cover";
             document.body.className = "day";
             document.getElementById("dayNight").src = "/img/sun.png";
           }
           else {
-            localStorage.setItem("background", "img/moon.png")
+            localStorage.setItem("background", "night")
             document.body.style.backgroundSize = "cover";
             document.body.className = "night"
             document.getElementById("dayNight").src = "/img/moon.png";

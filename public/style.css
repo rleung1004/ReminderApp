@@ -58,9 +58,7 @@ body {
   line-height: 1.5;
   color: #495057;
   text-align: left;
-  
-  height: 100%;
-  background-size: cover;
+  background-attachment: fixed;
 }
 
 #dayNight {
@@ -165,7 +163,7 @@ transform: translate(-50%);
 }
 
 .scroll-area-sm {
-  height: 450px;
+  height: 50vh;
   overflow-x: hidden;
 }
 

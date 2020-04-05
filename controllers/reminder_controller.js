@@ -83,7 +83,7 @@ let remindersController = {
         res.redirect("/reminder");
       }
     })
-  },
+  }
 
 /* 
   // does not work... ask Armaan

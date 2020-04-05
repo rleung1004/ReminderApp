@@ -1,25 +1,6 @@
-<!-- <div class="container">
-  <h1 class="page-header">REMINDERS</h1>
 
-<ul class="list-group">
-  <% reminders.forEach(function (reminderItem) { %>
-    <li class="list-group-item">
-      <strong><%= reminderItem.title %>: </strong>
-      <%= reminderItem.description %>
-      || Completed:
-      <% if (reminderItem.completed == true) { %>
-        <span class="label label-success">True</span>
-      <% } else if (reminderItem.completed == false) { %>
-        <span class="label label-danger">False</span>
-      <% } %>
-      <a class="pull-right" href=<%= "/reminder/" + reminderItem.id %>>View</a>
-    </li>
-  <% }) %>
-</ul>
 
-</div> -->
-
-<body class="day">
+<body>
 
 <script src="https://use.fontawesome.com/41dd587675.js"></script>
 
@@ -125,7 +106,7 @@
           <div class="d-block text-right card-footer">
 
               
-                <button type="submit" class="mr-2 btn btn-link btn-sm">Delete Selected</button>
+            <button type="submit" class="mr-2 btn btn-link btn-sm">Delete Selected</button>
             
 
             <!-- add a new reminder button          currently only brings user to the vreate.ejs page -->
