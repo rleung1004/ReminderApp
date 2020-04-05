@@ -123,13 +123,33 @@
               </perfect-scrollbar>
           </div>
           <div class="d-block text-right card-footer">
-
-              
+                <form onsubmit="addToReminders()">
+                  <label for="myfile">Import a txt file:</label>
+                  <input type="file" id="myfile">
+                  <input type="submit">
+                </form>
+                <script>
+                  function addToReminders(){
+                    let file = document.getElementById("myfile").files[0];
+                    Database.cindy.reminders.push(file);
+                    /* Following code taken off of stack overflow.  Minimum understanding. */
+                    if (file) {
+                      var reader = new FileReader();
+                      reader.readAsText(file, "UTF-8");
+                      reader.onload = function (evt) {
+                        alert("I read the file")
+                      }
+                      reader.onerror = function (evt) {
+                        alert("Error loading file");
+                      }
+                    }
+                  }
+                </script>
                 <button type="submit" class="mr-2 btn btn-link btn-sm">Delete Selected</button>
-            
-
+               
             <!-- add a new reminder button          currently only brings user to the vreate.ejs page -->
             <a href="/reminder/new"><button class="btn btn-primary">Add Reminder</button></a>
+            
         </div>
       </div>
   </div>

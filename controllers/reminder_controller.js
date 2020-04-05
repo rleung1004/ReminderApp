@@ -32,6 +32,15 @@ let remindersController = {
     fs.writeFileSync("test.txt", reminder, 'utf8', function(err){console.log(err)});
     res.download("test.txt",filename="reminders.txt");
   },
+
+  import: (req, res) => {
+    let reminderToFind = req.params.id;
+    let searchResult = Database.cindy.reminders.find(function(reminder) {
+      return reminder.id == reminderToFind;
+    })
+    console.log("I WAS CALLED");
+    res.redirect('/reminder');
+  },
   
   // added remind date
   create: (req, res) => {
