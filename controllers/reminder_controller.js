@@ -50,10 +50,10 @@ let remindersController = {
     let searchResult = Database.cindy.reminders.find(function(reminder) {
       return reminder.id == reminderToFind;
     })
-    var fs = require('fs');
-    let reminder = JSON.stringify(Database.cindy.reminders)
-    fs.writeFileSync("test.txt", reminder, 'utf8', function(err){console.log(err)});
-    res.download("test.txt",filename="reminders.txt");
+    var fs = require('fs'); 
+    let reminder = JSON.stringify(Database.cindy.reminders) // converts to string so it can be downloaded
+    fs.writeFileSync("test.txt", reminder, 'utf8', function(err){console.log(err)}); // creates new file called test.txt and fills it with the contents of the reminders
+    res.download("test.txt",filename="reminders.txt");  // downloads the file made in the last line with the name "reminders.txt"
   },
 
   edit: (req, res) => {
