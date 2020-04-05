@@ -39,6 +39,7 @@ let remindersController = {
       remindDate: req.body.remindDate,
       currentDate: req.body.remindDate == current,
       completed: false,
+      umbrella: false,
     };
     Database.cindy.reminders.push(reminder);
     res.redirect("/reminder");
@@ -56,11 +57,23 @@ let remindersController = {
     let reminderToFind = req.params.id;
     let searchResult = Database.cindy.reminders.find(function (reminder) {
       if (reminder.id == reminderToFind) {
+        let date = reminder.remindDate;
         (reminder.title = req.body.title),
           (reminder.description = req.body.description),
-          (reminder.remindDate = req.body.remindDate),
+          (date = req.body.remindDate),
           // Why do you think I had to do req.body.completed == "true" below?
           (reminder.completed = req.body.completed == "true");
+        weatherData.forEach((day) => {
+          if ((day.time = date)) {
+            if (
+              day.icon == "rain" ||
+              day.icon == "sleet" ||
+              day.icon == "snow"
+            ) {
+              reminder.umbrella = req.body.umbrella = "true";
+            }
+          }
+        });
       }
     });
     res.redirect("/reminder/" + reminderToFind);
@@ -96,6 +109,7 @@ let remindersController = {
     let api_url = `https://api.darksky.net/forecast/adaec7279bd9fe4d04fac4d6ecd1052b/${lat},${lon}`;
     let fetch_response = await fetch(api_url);
     weatherData = await fetch_response.json();
+    weatherData = weatherData.daily.data;
     res.json(weatherData);
     let date = req.body.remindDate;
   },

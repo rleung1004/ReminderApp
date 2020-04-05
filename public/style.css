@@ -1,7 +1,6 @@
 .deleteForm {
-  display: inline-block
+  display: inline-block;
 }
-
 
 .night {
   background-image: url("img/mountains.jpg");
@@ -48,12 +47,13 @@ div.card-header-tab.card-header {
   background-color: #fff;
 }
 
-
 /* boot strap code*/
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-weight: 400;
   line-height: 1.5;
   color: #495057;
@@ -69,24 +69,24 @@ body {
   height: 20rem;
 }
 
-.badge{
+.badge {
   background-color: #f188dd !important;
 }
 
 .label-danger {
-  background-color: #f188dd!important;
+  background-color: #f188dd !important;
 }
 
 .label-success {
-  background-color: #f188dd!important;
-} 
+  background-color: #f188dd !important;
+}
 
 h1 {
   color: #f2dede;
   font-family: penna;
 }
 
-.page-header{
+.page-header {
   margin: 10px 0 20px !important;
 }
 
@@ -96,25 +96,27 @@ h1 {
   margin-top: 0% !important;
   transform: translate(-50%);
   width: 700px;
-  
-} 
+}
 
 i {
-  font-style: italic
+  font-style: italic;
 }
 
 .container {
-  margin-top: 20px
+  margin-top: 20px;
 }
 
 .card {
-  box-shadow: 0 0.46875rem 2.1875rem rgba(4, 9, 20, 0.03), 0 0.9375rem 1.40625rem rgba(4, 9, 20, 0.03), 0 0.25rem 0.53125rem rgba(4, 9, 20, 0.05), 0 0.125rem 0.1875rem rgba(4, 9, 20, 0.03);
+  box-shadow: 0 0.46875rem 2.1875rem rgba(4, 9, 20, 0.03),
+    0 0.9375rem 1.40625rem rgba(4, 9, 20, 0.03),
+    0 0.25rem 0.53125rem rgba(4, 9, 20, 0.05),
+    0 0.125rem 0.1875rem rgba(4, 9, 20, 0.03);
   border-width: 0;
-  transition: all .2s
+  transition: all 0.2s;
 }
 
 .card-header:first-child {
-  border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0
+  border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
 }
 
 .card-header {
@@ -137,9 +139,9 @@ i {
   display: flex;
   align-items: center;
   font-size: 20px;
-position: relative;
-left: 50%;
-transform: translate(-50%);
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
 }
 
 .card-header .header-icon {
@@ -159,7 +161,7 @@ transform: translate(-50%);
 }
 
 .text-capitalize {
-  text-transform: capitalize !important
+  text-transform: capitalize !important;
 }
 
 .scroll-area-sm {
@@ -173,14 +175,14 @@ transform: translate(-50%);
   padding: 0.75rem 1.25rem;
   margin-bottom: -1px;
   background-color: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.125)
+  border: 1px solid rgba(0, 0, 0, 0.125);
 }
 
 .list-group {
   display: flex;
   flex-direction: column;
   padding-left: 0;
-  margin-bottom: 0
+  margin-bottom: 0;
 }
 
 .todo-indicator {
@@ -190,51 +192,51 @@ transform: translate(-50%);
   border-radius: 0.3rem;
   left: 0.625rem;
   top: 20%;
-  opacity: .6;
-  transition: opacity .2s
+  opacity: 0.6;
+  transition: opacity 0.2s;
 }
 
 .bg-warning {
-  background-color: #f7b924 !important
+  background-color: #f7b924 !important;
 }
 
 .widget-content {
   padding: 1rem;
   flex-direction: row;
-  align-items: center
+  align-items: center;
 }
 
 .widget-content .widget-content-wrapper {
   display: flex;
   flex: 1;
   position: relative;
-  align-items: center
+  align-items: center;
 }
 
 .widget-content .widget-content-right.widget-content-actions {
   visibility: hidden;
   opacity: 0;
-  transition: opacity .2s
+  transition: opacity 0.2s;
 }
 
 .widget-content .widget-content-right {
-  margin-left: auto
+  margin-left: auto;
 }
 
 .btn:not(:disabled):not(.disabled) {
-  cursor: pointer
+  cursor: pointer;
 }
 
 .btn {
   position: relative;
-  transition: color 0.15s, background-color 0.15s, border-color 0.15s, box-shadow 0.15s
+  transition: color 0.15s, background-color 0.15s, border-color 0.15s,
+    box-shadow 0.15s;
 }
 
 .btn-outline-danger {
-  color:red;
+  color: red;
   border-color: red;
   background-color: white;
-  
 }
 .btn-outline-danger:hover {
   color: white;
@@ -250,28 +252,33 @@ transform: translate(-50%);
 .btn-outline-success:hover {
   color: #fff;
   background-color: #3ac47d;
-  border-color: #3ac47d
+  border-color: #3ac47d;
 }
 
 .btn-outline-success:hover {
   color: #fff;
   background-color: #3ac47d;
-  border-color: #3ac47d
+  border-color: #3ac47d;
 }
 
 .btn-primary {
   color: #fff;
   background-color: #3f6ad8;
-  border-color: #3f6ad8
+  border-color: #3f6ad8;
 }
 
 .btn {
   position: relative;
-  transition: color 0.15s, background-color 0.15s, border-color 0.15s, box-shadow 0.15s;
-  outline: none !important
-
+  transition: color 0.15s, background-color 0.15s, border-color 0.15s,
+    box-shadow 0.15s;
+  outline: none !important;
 }
 
 .card-footer {
-  background-color: #fff
+  background-color: #fff;
+}
+
+.umbrellaIcon {
+  width: 50px;
+  height: 50px;
 }

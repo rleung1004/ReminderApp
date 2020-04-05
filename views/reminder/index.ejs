@@ -1,128 +1,141 @@
-
-
 <body>
 
-<script src="https://use.fontawesome.com/41dd587675.js"></script>
+  <script src="https://use.fontawesome.com/41dd587675.js"></script>
 
-<!-- boot strap code -->
+  <!-- boot strap code -->
 
-<div class="row d-flex justify-content-center container">
-  <div class="box">
+  <div class="row d-flex justify-content-center container">
+    <div class="box">
       <div class="card-hover-shadow-2x mb-3 card">
-          <div class="card-header-tab card-header">
+        <div class="card-header-tab card-header">
 
-            <!-- the header at the top of the box -->
-              <div class="card-header-title font-size-lg text-capitalize font-weight-normal">&nbsp;Reminders</div>
-          </div>
-          <div class="scroll-area-sm">
-
-
-              <perfect-scrollbar class="ps-show-limits">
-                  <div style="position: static;" class="ps ps--active-y">
-                      <div class="ps-content">
+          <!-- the header at the top of the box -->
+          <div class="card-header-title font-size-lg text-capitalize font-weight-normal">&nbsp;Reminders</div>
+        </div>
+        <div class="scroll-area-sm">
 
 
-                        <!-- the unordered list starts here -->
-                          <ul class=" list-group list-group-flush">
+          <perfect-scrollbar class="ps-show-limits">
+            <div style="position: static;" class="ps ps--active-y">
+              <div class="ps-content">
 
 
-                            <!-- need to add tags here -->
-                            <!-- the new reminder items will be generated to the box by this code-->
-                            <% reminders.forEach(function (reminderItem) { %>
-                              <li class="list-group-item">
-                                  <div class="todo-indicator bg-warning"></div>
-                                  <div class="widget-content p-0">
-                                      <div class="widget-content-wrapper">
-                                          <div class="widget-content-left mr-2">
-                                              <div class="custom-checkbox custom-control"> <input class="custom-control-input" id="exampleCustomCheckbox12" type="checkbox"><label class="custom-control-label" for="exampleCustomCheckbox12">&nbsp;</label> </div>
-                                          </div>
-                                          <div class="widget-content-left">
-
-                                            <!-- the item title will appear here -->
-                                              <div class="widget-heading"><%= reminderItem.title %>: <div class="badge badge-danger ml-2">
-
-                                                <!-- checked to see if the reminder has been completed -->
-                                                <% if (reminderItem.completed == true) { %>
-
-                                                    <!-- if complete show bagde Complete -->
-                                                  <span class="label label-success">Complete</span>
-
-                                                <% } else if (reminderItem.completed == false) { %>
-
-                                                    <!-- if incomplete or false show Not Complete -->
-                                                  <span class="label label-danger">Not Complete</span>
-
-                                                <% } %></div>
-
-                                                <!-- shows the item description User input -->
-                                              </div>
-                                              <div class="widget-subheading"><i><%= reminderItem.description %></i></div>
-                                              <div><b>Date: </b><%= reminderItem.remindDate %></div>
-                                          </div>
-                                          
-                                          <div class="widget-content-right">
-
-                                              <!-- view is linked to single-reminder.ejs to view all reminder details -->
-                                                <a href=<%= "/reminder/" + reminderItem.id %>>View</a>
-
-                                                <!-- the green check box              has functionality -->
-                                                <form class="completeForm" method="POST" action=<%= "/reminder/complete/" + reminderItem.id %>>
-                                                  <button class="border-0 btn-transition btn btn-outline-success"> <i class="fa fa-check"></i></button>
-                                                </form>
-                                               
-
-                                                <!-- the red delete box        has functionality -->
-                                                <form class="deleteForm "method="POST" action=<%= "/reminder/delete/" + reminderItem.id %>>
-                                                    <button type="submit"class="border-0 btn-transition btn btn-outline-danger"> <i class="fa fa-trash"></i> </button>
-                                                  </form> 
-                                             </div>
-                                      </div>
-                                  </div>
+                <!-- the unordered list starts here -->
+                <ul class=" list-group list-group-flush">
 
 
-                                  <!-- if the remind date is the same as the current date an alert box pops up with the reminder title -->
-                                  <% if (reminderItem.currentDate && !reminderItem.completed) { %>
-                                    
-                                    <script>
+                  <!-- need to add tags here -->
+                  <!-- the new reminder items will be generated to the box by this code-->
+                  <% reminders.forEach(function (reminderItem) { %>
+                  <li class="list-group-item">
+                    <div class="todo-indicator bg-warning"></div>
+                    <div class="widget-content p-0">
+                      <div class="widget-content-wrapper">
+                        <div class="widget-content-left mr-2">
+                          <div class="custom-checkbox custom-control"> <input class="custom-control-input"
+                              id="exampleCustomCheckbox12" type="checkbox"><label class="custom-control-label"
+                              for="exampleCustomCheckbox12">&nbsp;</label> </div>
+                        </div>
+                        <div class="widget-content-left">
+                          <!-- the item title will appear here -->
+                          <div class="widget-heading"><%= reminderItem.title %>: <div class="badge badge-danger ml-2">
+                              <!-- checked to see if the reminder has been completed -->
+                              <% if (reminderItem.completed == true) { %>
+                              <!-- if complete show bagde Complete -->
+                              <span class="label label-success">Complete</span>
+                              <% } else if (reminderItem.completed == false) { %>
+                              <!-- if incomplete or false show Not Complete -->
+                              <span class="label label-danger">Not Complete</span>
+                              <% } %></div>
+                            <!-- shows the item description User input -->
+                          </div>
+                          <div class="widget-subheading"><i><%= reminderItem.description %></i></div>
+                          <div><b>Date: </b><%= reminderItem.remindDate %></div>
+                        </div>
 
-                                      setTimeout(function () {
-                                        alert("<%= reminderItem.title %> is happening today!")
-                                      }, 1000)
-                                      
-                                    </script>
+                        <div class="widget-content-right">
+                          <!-- view is linked to single-reminder.ejs to view all reminder details -->
+                          <% if (reminderItem.umbrella == true) { %>
+                          <!-- if true show colored umbrella -->
+                          <img src="/img/umbrella-true.png" class="umbrellaIcon">
+                          <% } else if (reminderItem.umbrella == false) { %>
+                          <!-- if false show greyed out umbrella -->
+                          <img src="/img/umbrella-false.png" class="umbrellaIcon">
+                          <% } %>
+                          <a href=<%= "/reminder/" + reminderItem.id %>>View</a>
+                          <!-- the green check box              has functionality -->
+                          <form class="completeForm" method="POST"
+                            action=<%= "/reminder/complete/" + reminderItem.id %>>
+                            <button class="border-0 btn-transition btn btn-outline-success"> <i
+                                class="fa fa-check"></i></button>
+                          </form>
 
-                                <% } %>
-
-
-                              </li>
-                              <% }) %>
-                          </ul>
-
-
+                          <!-- the red delete box        has functionality -->
+                          <form class="deleteForm " method="POST" action=<%= "/reminder/delete/" + reminderItem.id %>>
+                            <button type="submit" class="border-0 btn-transition btn btn-outline-danger"> <i
+                                class="fa fa-trash"></i> </button>
+                          </form>
+                        </div>
                       </div>
-                  </div>
-              </perfect-scrollbar>
-          </div>
-          <div class="d-block text-right card-footer">
+                    </div>
+                    <!-- if the remind date is the same as the current date an alert box pops up with the reminder title -->
+                    <% if (reminderItem.currentDate && !reminderItem.completed) { %>
 
-              
-            <button type="submit" class="mr-2 btn btn-link btn-sm">Delete Selected</button>
-            
+                    <script>
+                      setTimeout(function () {
+                        alert("<%= reminderItem.title %> is happening today!")
+                      }, 1000)
 
-            <!-- add a new reminder button          currently only brings user to the vreate.ejs page -->
-            <a href="/reminder/new"><button class="btn btn-primary">Add Reminder</button></a>
+                    </script>
+                    <% } %>
+                  </li>
+                  <% }) %>
+                </ul>
+
+
+              </div>
+            </div>
+          </perfect-scrollbar>
+        </div>
+        <div class="d-block text-right card-footer">
+
+
+          <button type="submit" class="mr-2 btn btn-link btn-sm">Delete Selected</button>
+
+
+          <!-- add a new reminder button          currently only brings user to the vreate.ejs page -->
+          <a href="/reminder/new"><button class="btn btn-primary">Add Reminder</button></a>
         </div>
       </div>
+    </div>
   </div>
-</div>
 
 
-<div>
+  <div>
 
 
 
 
-  
-</div>
+
+  </div>
+  <script>
+    let lat, lon;
+    if ("geolocation" in navigator) {
+      console.log("geolocation available");
+      navigator.geolocation.getCurrentPosition(async (position) => {
+        lat = position.coords.latitude;
+        lon = position.coords.longitude;
+        console.log(lat.toFixed(2));
+        console.log(lon.toFixed(2));
+        const api_url = `weather/${lat},${lon}`;
+        const fetch_response = await fetch(api_url);
+        const json = await fetch_response.json();
+        console.log(json);
+      });
+    } else {
+      console.log("geolocation available not available");
+    }
+  </script>
+
 
 </body>

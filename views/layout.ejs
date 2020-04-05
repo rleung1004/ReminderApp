@@ -1,47 +1,41 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <title>Reminder List</title>
-    <link
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="/style.css" />
-    <link rel="stylesheet" href="/navbar.css" />
-    <link rel="stylesheet" href="/create.css" />
-  </head>
-  <body>
-    <%- include ("./partials/navbar") %> <%- body %>
 
-    <script
-      src="https://code.jquery.com/jquery-3.1.1.min.js"
-      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-      integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-      crossorigin="anonymous"
-    ></script>
+<head>
+  <meta charset="utf-8" />
+  <title>Reminder List</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/navbar.css" />
+  <link rel="stylesheet" href="/create.css" />
+</head>
 
-    <img id="dayNight" onclick="background()" src="img/sun.png" />
-    <script>
-      if (localStorage.getItem("background") == null) {
-        localStorage.setItem("background", "day");
-      }
+<body>
+  <%- include ("./partials/navbar") %> <%- body %>
 
-      if (localStorage.getItem("background") == "day") {
-        document.body.className = "day";
-        document.getElementById("dayNight").src = "/img/sun.png";
-      } else {
-        document.body.className = "night";
-        document.getElementById("dayNight").src = "/img/moon.png";
-      }
-    </script>
-  </body>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+
+  <img id="dayNight" onclick="background()" src="img/sun.png" />
+  <script>
+    if (localStorage.getItem("background") == null) {
+      localStorage.setItem("background", "day");
+    }
+
+    if (localStorage.getItem("background") == "day") {
+      document.body.className = "day";
+      document.getElementById("dayNight").src = "/img/sun.png";
+    } else {
+      document.body.className = "night";
+      document.getElementById("dayNight").src = "/img/moon.png";
+    }
+  </script>
+</body>
+
 </html>
 
 <!-- function that changes the background image from night to day -->
@@ -58,24 +52,5 @@
       document.body.className = "night";
       document.getElementById("dayNight").src = "/img/moon.png";
     }
-  }
-</script>
-
-<script>
-  let lat, lon;
-  if ("geolocation" in navigator) {
-    console.log("geolocation available");
-    navigator.geolocation.getCurrentPosition(async (position) => {
-      lat = position.coords.latitude;
-      lon = position.coords.longitude;
-      console.log(lat.toFixed(2));
-      console.log(lon.toFixed(2));
-      const api_url = `weather/${lat},${lon}`;
-      const fetch_response = await fetch(api_url);
-      const json = await fetch_response.json();
-      console.log(json);
-    });
-  } else {
-    console.log("geolocation available not available");
   }
 </script>
