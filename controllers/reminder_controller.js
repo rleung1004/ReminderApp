@@ -28,7 +28,8 @@ let remindersController = {
       return reminder.id == reminderToFind;
     })
     var fs = require('fs');
-    fs.writeFile("test.txt", Database.cindy, function(err){console.log(err)});
+    let reminder = JSON.stringify(Database.cindy.reminders)
+    fs.writeFileSync("test.txt", reminder, 'utf8', function(err){console.log(err)});
     res.download("test.txt",filename="reminders.txt");
   },
   

@@ -1,1 +1,1 @@
-[object Object]
+[{"id":1,"title":"asdf","description":"asdf","remindDate":"2020-04-05","currentDate":false,"completed":false}]
