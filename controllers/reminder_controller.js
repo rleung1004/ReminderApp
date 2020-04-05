@@ -45,6 +45,17 @@ let remindersController = {
     res.redirect("/reminder");
   },
 
+  download: (req, res) => {
+    let reminderToFind = req.params.id;
+    let searchResult = Database.cindy.reminders.find(function(reminder) {
+      return reminder.id == reminderToFind;
+    })
+    var fs = require('fs');
+    let reminder = JSON.stringify(Database.cindy.reminders)
+    fs.writeFileSync("test.txt", reminder, 'utf8', function(err){console.log(err)});
+    res.download("test.txt",filename="reminders.txt");
+  },
+
   edit: (req, res) => {
     let reminderToFind = req.params.id;
     let searchResult = Database.cindy.reminders.find(function (reminder) {
