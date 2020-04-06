@@ -39,7 +39,7 @@ app.get("/weather/:coordinates", reminderController.getWeatherData);
 /* /// does not work... ask Armaan
 app.post("/reminder/deleteSelected/:id", reminderController.deleteSelected) */
 
-app.listen(3001, function () {
+app.listen(3000, function () {
   console.log(
     "Server running. Visit: localhost:3001/reminder in your browser 🚀"
   );

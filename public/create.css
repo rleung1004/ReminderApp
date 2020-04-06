@@ -32,3 +32,11 @@ label {
 .checkbox, .radio {
     width: 50px;
 }
+
+label.tags-label {
+    color: black !important;
+}
+
+a {
+    color: #0c234 !important;
+}
