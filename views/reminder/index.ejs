@@ -51,7 +51,9 @@
                           </div>
                           <div class="widget-subheading"><i><%= reminderItem.description %></i></div>
                           <div><b>Date: </b><%= reminderItem.remindDate %></div>
+                          <div><b>Tags: </b><%= reminderItem.tags.join(", ") %></div>
                         </div>
+                        
 
                         <div class="widget-content-right">
                           <!-- view is linked to single-reminder.ejs to view all reminder details -->

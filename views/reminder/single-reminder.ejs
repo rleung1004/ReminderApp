@@ -13,6 +13,13 @@
             <span class="label label-danger">False</span>
           <% } %>
         </h4>
+        <h4>Tags:
+          <ul>
+          <% reminderItem.tags.forEach(function (tag) { %>
+            <li><%= tag %></li>
+            <% }) %>
+        </h4>
+
 
         <a class="btn btn-warning" href=<%= "/reminder/" + reminderItem.id + "/edit" %>>Edit</a>
 

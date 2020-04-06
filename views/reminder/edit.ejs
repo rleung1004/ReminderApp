@@ -43,10 +43,55 @@
           False
         </label>
       </div>
+      <div class="form-group">
+        <label for="add">Tags</label>
+        <div id="tagDiv">
+          <br/>
+          <% let tagIndex = 0;
+          reminderItem.tags.forEach(function(tag) { %>
+            <p id="<%= tagIndex %>">
+              <input type="text" class="form-tag" name="tag" value=<%= tag %>>
+              <!-- error is indicated here, but code runs normally and no error is logged in console -->
+              <a onclick="removeTag(<%= tagIndex %>)">Remove</a>
+            </p>
+          <% tagIndex += 1}); %>
+        </div>
+        <br/>
+        <input type="button" class="btn btn-default" id="tagButton" value="Add Tag" name="add">
+        <br/>
+      </div>
     </div>
     <button type="submit" class="btn btn-default">Submit</button>
   </form>
 </div>
 
       
-  </script>
+<script>
+  // writing script in html because simpler than accessing from an external file, due to dynamic directory name (1, 2, 3)
+  let add = document.getElementById("tagButton");
+  let tagDiv = document.getElementById("tagDiv");
+  add.onclick = function () {
+    let p = document.createElement("p");
+    tagDiv.appendChild(p);
+    let newTag = document.createElement("input");
+    newTag.type = "text";
+    newTag.class = "form-tag";
+    newTag.placeholder = "Tag name";
+    newTag.name = "tag";
+    let remove = document.createElement("a");
+    remove.innerHTML = "Remove";
+    remove.onclick = function () {
+      p.parentNode.removeChild(p);
+      newTag.parentNode.removeChild(newTag);
+      remove.parentNode.removeChild(remove);  // present for future styling, classes currently do nothing
+    }
+    tagDiv.appendChild(newTag);
+    tagDiv.appendChild(remove); // note that the space btw input and remove is different from edit page, unsure as to why
+  }
+
+  // remove existing tag input
+  function removeTag (tagIndex) {
+    let tag = document.getElementById(tagIndex);
+    tag.parentNode.removeChild(tag);
+  }
+</script>

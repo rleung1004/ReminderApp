@@ -19,6 +19,15 @@
                 min="2019-01-01" max="2023-12-31">
   
       </div>
+      <div class="form-group">
+        <label for="tag">Tags</label>
+        <div id="tagDiv">
+          <!-- tags appear here as text inputs with 'remove' a tag -->
+        </div>
+        <br/>
+        <input type="button" class="btn btn-default" id="tagButton" value="Add Tag" name="add">
+        <br/>
+      </div>
       <button type="submit" class="btn btn-default">Submit</button>
     </form>
   </div>
@@ -28,8 +37,29 @@
   document.getElementById("remindDate").valueAsDate = new Date();
   
 </script>
-
-
-
-      
-  </script>
+<script>
+  // let tag = document.getElementById("tagInput");
+  let add = document.getElementById("tagButton");
+  // let tagList = document.getElementById("tagList");
+  let tagDiv = document.getElementById("tagDiv");
+  add.onclick = function () {
+    let p = document.createElement("p");
+    tagDiv.appendChild(p);
+    // adding a second br doesn't seem to do anything, will have to pad in css
+    // tagDiv.appendChild(br);
+    let newTag = document.createElement("input");
+    newTag.type = "text";
+    newTag.class = "tag form-tag";  // present for future styling, classes currently do nothing
+    newTag.placeholder = "Tag name";
+    newTag.name = "tag";
+    let remove = document.createElement("a");
+    remove.innerHTML = "Remove";
+    remove.onclick = function () {
+      p.parentNode.removeChild(p);
+      newTag.parentNode.removeChild(newTag);
+      remove.parentNode.removeChild(remove);
+    }
+    tagDiv.appendChild(newTag);
+    tagDiv.appendChild(remove); // note that the space btw input and remove is different from edit page, unsure as to why
+  }
+</script>
