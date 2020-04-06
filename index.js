@@ -12,6 +12,9 @@ app.use(ejsLayouts);
 app.set("view engine", "ejs");
 
 // Routes start here
+app.get("/reminder/import", reminderController.import)
+
+app.get("/reminder/:id/download", reminderController.download)
 
 app.get("/reminder", reminderController.list);
 
@@ -34,8 +37,8 @@ app.get("/weather/:coordinates", reminderController.getWeatherData);
 /* /// does not work... ask Armaan
 app.post("/reminder/deleteSelected/:id", reminderController.deleteSelected) */
 
-app.listen(3000, function () {
+app.listen(3001, function () {
   console.log(
-    "Server running. Visit: localhost:3000/reminder in your browser 🚀"
+    "Server running. Visit: localhost:3001/reminder in your browser 🚀"
   );
 });

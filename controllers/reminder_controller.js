@@ -30,11 +30,20 @@ let remindersController = {
   // added remind date
   create: (req, res) => {
     let current = currentDate();
-
+    // taken from stackoverflow https://stackoverflow.com/questions/19084570/how-to-add-items-to-array-in-nodejs
+    let tagDiv = req.body.tag;
+    let tags = [];
+    tagDiv.forEach( function(aTag) {
+      aTag = aTag.trim();
+      if (aTag != "") {
+      tags.push(aTag);
+      }
+    });
     let reminder = {
       id: Database.cindy.reminders.length + 1,
       title: req.body.title,
       description: req.body.description,
+      tags: tags,
       remindDate: req.body.remindDate,
       currentDate: req.body.remindDate == current,
       completed: false,
@@ -61,6 +70,17 @@ let remindersController = {
 
     Database.cindy.reminders.push(reminder);
     res.redirect("/reminder");
+  },
+
+  download: (req, res) => {
+    let reminderToFind = req.params.id;
+    let searchResult = Database.cindy.reminders.find(function(reminder) {
+      return reminder.id == reminderToFind;
+    })
+    var fs = require('fs'); 
+    let reminder = JSON.stringify(Database.cindy.reminders) // converts to string so it can be downloaded
+    fs.writeFileSync("test.txt", reminder, 'utf8', function(err){console.log(err)}); // creates new file called test.txt and fills it with the contents of the reminders
+    res.download("test.txt",filename="reminders.txt");  // downloads the file made in the last line with the name "reminders.txt"
   },
 
   edit: (req, res) => {
