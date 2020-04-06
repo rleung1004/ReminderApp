@@ -12,6 +12,10 @@ app.use(ejsLayouts);
 app.set("view engine", "ejs");
 
 // Routes start here
+
+// This route does not work right now
+// app.get("/reminder/import", reminderController.import)
+
 app.get("/reminder/:id/download", reminderController.download)
 
 app.get("/reminder", reminderController.list);
