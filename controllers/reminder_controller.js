@@ -33,12 +33,19 @@ let remindersController = {
     // taken from stackoverflow https://stackoverflow.com/questions/19084570/how-to-add-items-to-array-in-nodejs
     let tagDiv = req.body.tag;
     let tags = [];
-    tagDiv.forEach(function (aTag) {
-      aTag = aTag.trim();
-      if (aTag != "") {
-        tags.push(aTag);
+    if (tagDiv) {
+      if (typeof(tagDiv) === 'string') {
+        tags.push(tagDiv);
       }
-    });
+      else {
+        tagDiv.forEach( function(aTag) {
+          aTag = aTag.trim();
+          if (aTag != "") {
+            tags.push(aTag);
+          }
+        });
+      }
+    }
     let reminder = {
       id: Database.cindy.reminders.length + 1,
       title: req.body.title,
