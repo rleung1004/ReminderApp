@@ -1,7 +1,6 @@
 const fetch = require("node-fetch");
 let Database = require("../database");
 let currentDate = require("../utility/handyFunctions");
-let coordinates = { lat: undefined, lon: undefined };
 let weatherData;
 
 let remindersController = {
@@ -41,6 +40,25 @@ let remindersController = {
       completed: false,
       umbrella: false,
     };
+    let date = new Date(reminder.remindDate);
+    let time = String(date.getTime());
+    time = time.substring(0, time.length - 3);
+    time = parseInt(time);
+
+    weatherData.forEach((day) => {
+      // hard coded conversion from PDT to UTC
+      let convertedTime = day.time - 25200;
+      if ((convertedTime === time)) {
+        if (
+          day.icon === "rain" ||
+          day.icon === "sleet" ||
+          day.icon === "snow"
+        ) {
+          reminder.umbrella = true;
+        }
+      }
+    });
+
     Database.cindy.reminders.push(reminder);
     res.redirect("/reminder");
   },
@@ -57,25 +75,33 @@ let remindersController = {
     let reminderToFind = req.params.id;
     let searchResult = Database.cindy.reminders.find(function (reminder) {
       if (reminder.id == reminderToFind) {
-        let date = reminder.remindDate;
+        let date = new Date(reminder.remindDate);
+        let time = String(date.getTime());
+        time = time.substring(0, time.length - 3);
+        time = parseInt(time);
+
         (reminder.title = req.body.title),
           (reminder.description = req.body.description),
           (date = req.body.remindDate),
           // Why do you think I had to do req.body.completed == "true" below?
-          (reminder.completed = req.body.completed == "true");
+          (reminder.completed = req.body.completed == true);
+
         weatherData.forEach((day) => {
-          if ((day.time = date)) {
+          // hard coded conversion from PDT to UTC
+          let convertedTime = day.time - 25200;
+          if ((convertedTime === time)) {
             if (
-              day.icon == "rain" ||
-              day.icon == "sleet" ||
-              day.icon == "snow"
+              day.icon === "rain" ||
+              day.icon === "sleet" ||
+              day.icon === "snow"
             ) {
-              reminder.umbrella = req.body.umbrella = "true";
+              reminder.umbrella = true;
             }
           }
         });
       }
     });
+
     res.redirect("/reminder/" + reminderToFind);
   },
 
@@ -109,9 +135,9 @@ let remindersController = {
     let api_url = `https://api.darksky.net/forecast/adaec7279bd9fe4d04fac4d6ecd1052b/${lat},${lon}`;
     let fetch_response = await fetch(api_url);
     weatherData = await fetch_response.json();
+    console.log(weatherData.timezone);
     weatherData = weatherData.daily.data;
     res.json(weatherData);
-    let date = req.body.remindDate;
   },
 
   /* 
