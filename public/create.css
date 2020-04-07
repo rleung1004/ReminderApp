@@ -1,7 +1,7 @@
 label {
     display: block;
-    font: 1rem 'Fira Sans', sans-serif;
-    color: #f2dede;
+    font: 1.5rem 'Fira Sans', sans-serif;
+    
 
 }
 
@@ -10,10 +10,6 @@ label {
     margin: .4rem 0;
 }
 
-.create-container {
-    color: #f2dede !important;
-
-}
 
 .date {
     color: black;
@@ -24,10 +20,6 @@ label {
     left: 20em;
 }
 
-.form-group {
-    color: #f2dede !important;
-
-}
 
 .checkbox, .radio {
     width: 50px;
@@ -37,6 +29,3 @@ label.tags-label {
     color: black !important;
 }
 
-a {
-    color: #0c234 !important;
-}

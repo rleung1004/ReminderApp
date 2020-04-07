@@ -42,10 +42,13 @@ app.post("/reminder/complete/:id", reminderController.complete);
 app.get("/weather/:coordinates", reminderController.getWeatherData);
 
 app.post("/reminder/authenticate", reminderController.authenticate);
+
+app.post("/reminder/register", reminderController.register);
+
 /* /// does not work... ask Armaan
 app.post("/reminder/deleteSelected/:id", reminderController.deleteSelected) */
 
-app.listen(3002, function () {
+app.listen(3000, function () {
   console.log(
     "Server running. Visit: localhost:3000/reminder in your browser 🚀"
   );

@@ -29,9 +29,11 @@
     if (localStorage.getItem("background") == "day") {
       document.body.className = "day";
       document.getElementById("dayNight").src = "/img/sun.png";
+      document.body.style.color = "black";
     } else {
       document.body.className = "night";
       document.getElementById("dayNight").src = "/img/moon.png";
+      document.body.style.color = "#fee1cf";
     }
   </script>
 </body>
@@ -46,11 +48,13 @@
       document.body.style.backgroundSize = "cover";
       document.body.className = "day";
       document.getElementById("dayNight").src = "/img/sun.png";
+      document.body.style.color = "black";
     } else {
       localStorage.setItem("background", "night");
       document.body.style.backgroundSize = "cover";
       document.body.className = "night";
       document.getElementById("dayNight").src = "/img/moon.png";
+      document.body.style.color = "#fee1cf";
     }
   }
 </script>

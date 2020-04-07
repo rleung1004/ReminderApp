@@ -1,8 +1,12 @@
+<div  id="import">
+    <h3>Import</h3>
+    <p>Copy paste the exported textfile into the box below.</p>
+    <form action="/reminder/importpost">
+    <textarea name="importContent" class="import-content"></textarea>
+    <input class="import-button" type="button" onclick="sendData()" value="Import"/>
+    </form>
+</div>
 
-<form action="/reminder/importpost">
- <textarea name="importContent"></textarea>
- <input type="button" onclick="sendData()" value="Import"/>
-</form>
 
 <script>
     function sendData() {
