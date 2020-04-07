@@ -34,11 +34,11 @@ let remindersController = {
     let tagDiv = req.body.tag;
     let tags = [];
     if (tagDiv) {
-      if (typeof(tagDiv) === 'string') {
+      if (typeof (tagDiv) === 'string') {
         tags.push(tagDiv);
       }
       else {
-        tagDiv.forEach( function(aTag) {
+        tagDiv.forEach(function (aTag) {
           aTag = aTag.trim();
           if (aTag != "") {
             tags.push(aTag);
@@ -61,19 +61,21 @@ let remindersController = {
     time = time.substring(0, time.length - 3);
     time = parseInt(time);
 
-    weatherData.forEach((day) => {
-      // hard coded conversion from PDT to UTC
-      let convertedTime = day.time - 25200;
-      if ((convertedTime === time)) {
-        if (
-          day.icon === "rain" ||
-          day.icon === "sleet" ||
-          day.icon === "snow"
-        ) {
-          reminder.umbrella = true;
+    if (weatherData) {
+      weatherData.forEach((day) => {
+        // hard coded conversion from PDT to UTC
+        let convertedTime = day.time - 25200;
+        if ((convertedTime === time)) {
+          if (
+            day.icon === "rain" ||
+            day.icon === "sleet" ||
+            day.icon === "snow"
+          ) {
+            reminder.umbrella = true;
+          }
         }
-      }
-    });
+      });
+    }
 
     Database.cindy.reminders.push(reminder);
     res.redirect("/reminder");
@@ -89,7 +91,7 @@ let remindersController = {
     fs.writeFileSync("test.txt", reminder, 'utf8', function (err) { console.log(err) }); // creates new file called test.txt and fills it with the contents of the reminders
     res.download("test.txt", filename = "reminders.txt");  // downloads the file made in the last line with the name "reminders.txt"
   },
-  
+
   import: (req, res) => {
     // let reminderToFind = req.params.id;
     // let searchResult = Database.cindy.reminders.find(function(reminder) {
@@ -102,7 +104,7 @@ let remindersController = {
 
   importpost: (req, res) => {
     let importContent = req.body;
-    Database.cindy.reminders.push(importContent[0]); 
+    Database.cindy.reminders.push(importContent[0]);
   },
   edit: (req, res) => {
     let reminderToFind = req.params.id;
@@ -127,19 +129,21 @@ let remindersController = {
           // Why do you think I had to do req.body.completed == "true" below?
           (reminder.completed = req.body.completed == true);
 
-        weatherData.forEach((day) => {
-          // hard coded conversion from PDT to UTC
-          let convertedTime = day.time - 25200;
-          if ((convertedTime === time)) {
-            if (
-              day.icon === "rain" ||
-              day.icon === "sleet" ||
-              day.icon === "snow"
-            ) {
-              reminder.umbrella = true;
+        if (weatherData) {
+          weatherData.forEach((day) => {
+            // hard coded conversion from PDT to UTC
+            let convertedTime = day.time - 25200;
+            if ((convertedTime === time)) {
+              if (
+                day.icon === "rain" ||
+                day.icon === "sleet" ||
+                day.icon === "snow"
+              ) {
+                reminder.umbrella = true;
+              }
             }
-          }
-        });
+          });
+        }
       }
     });
 
@@ -185,14 +189,14 @@ let remindersController = {
     let username = req.body.username
     let password = req.body.password
     let user = Database[username]
-    
+
     if (user && password == user.password) {
-        res.redirect("/reminder")
-     
+      res.redirect("/reminder")
+
     } else {
       res.redirect("/reminder/errorAuth");
-    } 
-  
+    }
+
   }
 
   /* 
