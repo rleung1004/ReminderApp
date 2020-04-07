@@ -11,8 +11,9 @@ I spent alot of time getting familiar with asynchronous functions, and learning 
 I also worked with the the team doing all the technical administrative work like setting up the github repository, 
 doing all the trello board sprint planning, requirements gathering, etc.
 I spent a lot of time during the reading break reading on how firebase works, but did not get a chance to implement it in our project due to the time constraint and workload from 
-other courses. The main technical difficulties I faced was consilidating ejs code with the server side logic. Because ejs was not like normal html, my IDE plugins would interfere
-with the development of ejs viewing pages. Logical difficulties were understanding how the workflow is in our application and creating the correct routes in our server.
+other courses. The main technical difficulty I faced was consilidating ejs code with the server side logic. Because ejs was not like normal html, my IDE plugins would interfere
+with the development of ejs viewing pages. The other main technical difficulty I faced was merging code with other team members. Many conflicts had to be resolved manually.
+Logical difficulties were understanding how the workflow is in our application and creating the correct routes in our server.
 
 
 Kyrill Metalnikov A01081000
