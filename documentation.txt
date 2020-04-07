@@ -1,0 +1,475 @@
+Remindoggo
+(Reminder App)
+Documentation Booklet
+---------------------
+
+
+===Project Purpose===
+The purpose of this project is to provide users with a simple, easy-to-use interface for setting personal reminders. The
+app will alert the user if their reminder is scheduled for the current day, and inform the user to “bring an umbrella” if
+rain is expected that day. The app can also export a list of reminders as a .txt file, which can then be imported back into
+the app. Users can store all reminders locally to their browser, or create a username and password to store their reminders
+in a server database.
+
+
+===Contact Information===
+-Kyle Bulalakaw-
+kbulalakaw2@my.bcit.ca
+
+-Kyrill Metalnikov-
+kmetalnikov@my.bcit.ca
+
+-Lucy Chan-
+lchan217@my.bcit.ca
+
+-Ryan Leung-
+rleung95@my.bcit.ca
+
+-Saida Song-
+ssong61@my.bcit.ca
+
+
+===Getting Started===
+Welcome to using Remindoggo! The first thing you want to do when you clone this repository is to make sure you have node.js
+installed, and run “npm install” on the command line to install all the dependencies needed to run the application. When you
+first run the application, locally the domain is localhost:3000. Make sure that your port 3000 is not being used currently in
+your system. If it is in use, either clear port 3000 or change the hosting port number if you wish. Our index page for this
+app is our landing page. To have access to the full application, please login using credentials that match with data in
+database.js. The key inside the Database object is the user name, and the user password property is the password of the user.
+All functionality within the application is straightforward and builtin. The only work necessary to get the most out of our
+app is the import feature. To use the import feature, please copy the text found in the file you download from our export
+feature and paste it in the text area.
+
+
+===Design Document===
+-=Styling=-
+We use the Bootstrap library to style our app and landing page. We use https://startbootstrap.com/themes/creative/ as a
+template for our landing page. Most of the text uses Merriweather Sans font, and some smaller text elements use Merriweather
+font. The landing page has a navbar with <a> elements that scroll to their respective sections of the page (Brand Name
+“Remindoggo”, “About”, “Services”, “Contact”, “Login”). At the top of the page, the navbar text is coloured as
+rgb(255, 255, 255, 0.7) (grey). Scrolling down will change the navbar text to colour #212529 (black), and the <a> of the
+section in focus will be colour #F4623A (orange).
+
+For the navbar that appears on all app pages, we use Penna font. The font colour of the heading is #F2DEDE (soft pink). The
+font size of the brand name (“Remindoggo”) is 18px, and everything else (“List All”, “Create”, “Export”, “Login”) is 14px.
+The navbar itself has a transparent background. The navbar collapses to show just the brand name when the window is small
+enough (< 766px wide). 
+
+We used
+https://bbbootstrap.com/snippets/todo-task-list-badges-71324362?fbclid=IwAR3C3PLESwgGFeE68H0HAxpebE_8Jt-ixhHP64xq-jPZUf7o7-I0UxqhfC8
+as a template to build on for our app’s main page (redirects from “List All”). We use two background images for our app:
+- mountain-day.jpg from https://unsplash.com/photos/Y8lCoTRgHPE
+- mountains.jpg from https:/www.uhdpaper.com/2019/09/night-sky-stars-mountain-scenery-milky.html
+On first visit, the app will display mountain-day.jpg, with a 200x200px sun image
+(https://www.pixelsquid.com/png/low-poly-sun-1258051382515078642?image=G01) in the bottom-right of the screen. The background
+image will toggle to mountains.jpg, and the sun image to a moon image
+(https://www.pixelsquid.com/png/low-poly-sun-1258051382515078642?image=G01) when the sun is clicked (and toggle back when the
+moon is clicked). All transitions across the app occur over 0.15 seconds.
+
+This functionality code is written in the layout.ejs page so every other page in the app will have the same consistent
+background throughout. To keep the background image preference saved, local storage was used to remember the preference that
+the user chose. The text on all pages will be either “light pink” (#fee1cf") for night mode or “black” for day mode.
+
+The main page uses the Penna font. The header of the page (“Reminders”) is size 20px and uses #495057 (dark grey) colour.
+This colour is also used for user-created reminders. The <div> element containing user-created reminders has a background
+colour #FFFFFF (white) and 20px border-radius. The “Create Reminder” button has #3F6AD8 (blue) background colour, 14px font
+size, #FFF (white) text colour and 7px border-radius. The “Delete Selected” button has a transparent background, 12px font
+size and #337AB7 (blue) text colour.
+
+The “Create Reminder” and “Edit Reminder” pages use identical styling. Labels use 10px Fira Sans font with #F2DEDE text
+colour. “Title” text input and “Description” textarea span across the form, and have 6px vertical and 12px horizontal
+padding. All fields have placeholders corresponding to their labels. “Remind Date” appears as a dropdown calendar. The “Add
+Tag” and “Submit” buttons use default styling. “Tag” text inputs have default size and style, and the “Remove Tag” <a> tag
+uses default styling as well.
+
+The “Login” header fades in a #495057 (dark grey) colour overlay background and a modal with #FFF (white) background colour,
+6px border-radius and 15px padding all around. Input and label styling is shared with the Create and Edit pages. The “Login”
+button uses #5BC0DE (green) background colour, #FFF font colour, and 1px solid #46B8DA (dark green) border. The “Close”
+button has a transparent border, and otherwise default styling.
+
+The “Export” page uses default HTML5 textarea and button styling.
+
+
+-=Code structure=-
+
+
+-Authentication-
+- Concept
+>>> We use user-name/email and password protected credentials.
+>>> Our database stores the current list of reminders under this user’s login info.
+>>> The user is able to logout and login from different locations and access stored reminders belonging to that user.
+>>> A user is unable to access the reminders belonging to other users.
+
+- How it’ll work:
+>>> Open a new project on firebase
+>>> Create connect the firebase database to our project
+>>> Store in database every time it is updated
+>>> New reminders can be created locally without logging in
+>>> Logging in will add local reminders to database and sync stored reminders if they do not already exist locally
+
+- What we use:
+>>> SaaS database server
+>>> Able to store login credentials to compare for authentication
+>>> Also has an integrated system (Firebase Authentication) for login
+
+- Why we chose Firebase:
+>>> Relatively easy to use, much of the functionality we need is prepackaged
+>>> Team members have most experience with this system out of all similar platforms
+
+- Why we couldn’t implement it (obstacles):
+>>> We were too short on time to learn how to implement and refactor existing code to work with the real database
+>>> Current code is based on a fake database
+
+- What we could do to implement it:
+>>> Create a form that accepts username/email and password
+>>> If username and password exist in database:
+>>> Store login info as object, with reminder items as an object inside (object in object)
+>>> Sync database-stored reminder items with locally-stored reminder items when user logs in/out
+
+
+
+-Create a reminder-
+- Concept:
+>>> Create a reminder with title, description and tags
+>>> Display the reminder on the homepage
+
+- Styling:
+>>> The “Add Reminder” button:
+>>> The colors of form labels: #f2dede
+>>> Tags’ font-color: #000000
+
+- How it’ll work:
+>>> Click “Add Reminder”
+>>> Type in title
+>>> Type in the description
+>>> Select the remind date
+>>> (optional)Add tag(s) 
+>>> Click “submit” to create the reminder
+
+- What we use:
+>>> We use textboxes to get the title and description of the reminder.
+>>> We use a drop-down list to select the date of the reminder.
+>>> We use a button to add a tag and submit the form.
+
+- Why we use…:
+>>> Essential to the user experience for a reusable reminder app.
+>>> All-in-one page for tag creation reduces clicks needed to create a reminder, without being too condensed.
+
+
+
+-Edit a reminder-
+- Concept:
+>>> Access the reminder through homepage
+>>> User can edit the Title, Description, Remind Date, Tags, Completion Status
+>>> Display the edited reminder on the homepage
+
+- Styling:
+>>> Tags’ font color:  #000000
+
+- How it’ll work:
+>>> Click “View” of the reminder list.
+>>> Click the “Edit” button.
+>>> Change the Title, Description, Remind Date, Completion Status and Tags.
+>>> Click “Submit” to submit the change
+
+-What we use:
+>>> We use a hyperlink to jump to the reminder status page.
+>>> We use a button to jump to the reminder editing page.
+>>> We use textboxes to edit the Title, Description, Remind Date, Tags and Completion Status
+>>> We use a button to submit the change
+
+- Why we use…:
+>>> Essential to the user experience.
+
+
+
+-Delete a Reminder-
+- Concept:
+>>> Delete the reminder from the list.
+
+- Styling:
+>>> “Delete” button:
+    - Background-color: #D9534F
+    - Color: #FFFFFF
+    - “Bin” button: 
+>>> background-color: #FFFFFF
+    - Color, border-color: #FF0000
+    - “Bin” button when hover:
+    - Background-color: #FF0000
+    - Color, border-color: #FFFFFF
+
+- How it’ll work:
+>>> Click the “Trash Bin” icon to delete the reminder.
+>>> There is a delete functionality in the “view” (single reminder) page that the user can choose to use 
+
+- What we use:
+>>> Backend code is user to retrieve reminder id and delete the specific reminder from the database
+>>> A form envelopes the buttons designated as delete buttons and uses the method “POST” to run the backend delete function
+    on the reminder item
+
+- Why we use:
+>>> Essential to the user experience.
+>>> Users can delete reminders that are no longer needed.
+
+
+
+-Complete Reminders-
+- Concept:
+>>> Check the completed reminder
+>>> Change the status of reminders between “Complete” and “Not Complete”
+
+- Styling:
+>>> For the Status of completion:
+    - right side of the reminder’s name
+    - left floated
+    - Font-Color: #FFFFFF
+    - Background-color: #F188DD.
+>>> For “Check” button:
+    - left side of the “Bin” icon
+    - Font-Color: #3AC47D
+    - Border-Color: #3AC47D
+    - Background-Color: #FFFFFF.
+>>> The Value of the “Status” is changed to “Complete” if the user clicked the “check” button when the “Status” is
+    “Not Complete”.
+>>> The Value of the “Status” is changed to “Not Complete” if the user clicked the “check” button when the “Status” is 
+    “Complete”.
+
+- How it’ll work:
+>>> Click the “Check” button to complete the reminder.
+>>> Click the “Check” button again to make it not complete.
+
+- What we use:
+>>> We use a button to switch the completion status of the reminder.
+>>> We use a floating text to show the completion status of the reminder.
+
+- Why we use:
+>>> A check mark button is associated with “complete” action.
+>>> A floating text next to the name of the reminder so that the user will see easily.
+
+
+
+-Export Reminders-
+- Concept:
+>>> Download all reminders in current reminder list as a string
+
+- Styling:
+>>> An Export button in the navigation bar navbar.ejs
+>>> Font color: white
+
+- How it’ll work:
+>>> Click on the export button to download all reminders.
+
+- What we use:
+>>> The export button is a link that opens up downloads.ejs which in turn starts the download function.
+>>> The downloads function takes all the current reminders from the database and converts the JSON object to a string format
+    using JSON.stringify()
+>>> The string is then put into a new file called “reminders.txt” and the user receives it in the form of a file download.
+
+- Why we use:
+>>> We use a link so that the user has to click a button so it doesn’t automatically download.
+>>> We use a text file as that is a common file type that anyone can read/open which also helps for easier use of the import
+    function.
+
+
+
+-Import Reminders-
+- Concept:
+>>> Import reminder objects into the database
+
+- Styling:
+>>> A textarea element for the user to input text into
+>>> A submit button
+
+- How it’ll work:
+>>> The user types or copy/pastes properly formatted JSON objects into the textbox
+>>> The user then presses on the submit button to import that reminder
+
+- What we use:
+>>> The import button is a link that calls import.ejs
+>>> In import ejs there is a text box with a submit button.
+>>> After the user inputs a properly formatted JSON object and clicks submit the program runs logic on the input.
+>>> The fetch() function takes the text and converts it into JSON objects.
+>>> The objects are then pushed into the database which makes it show up on the reminders list page.
+
+
+- Why we use:
+>>> We use a link to keep the logic in a separate page for easier styling.
+>>> We use a textbox as the main input for the objects as getting a file imported would be too difficult in the original
+    timeframe.
+>>> We use a submit button so that a user can make sure the text is properly inputted before sending it through the program.
+
+
+-GeoLocation API-
+- Concept:
+>>> Get user’s location from client side 
+>>> Send the user location as coordinate to DarkSky API
+>>> DarkSky API only work if user allows browser access the location
+
+- How it’ll work:
+>>> The browser will prompt the user to allow their location
+>>> If user allowed, the latitude and longitude will be sent as a coordinates
+>>> Otherwise, an error will be logged in the console
+
+- What we use:
+>>> We use navigator.geolocation.getCurrentPosition to get the current latitude and longitude of the client side.
+>>> We use “array” to store the latitude and longitude of the user’s location
+>>> We pass the coordinate to the DarkSky API
+
+- Why we use GeoLocation:
+>>> Pass user’s location to DarkSky API to fetch weather forecast.
+
+
+
+-DarkSky API-
+- Concept:
+>>> Show if user need to take an umbrella on the date
+>>> Only works if user allows geolocation API to access user’s current location
+
+- Styling:
+>>> When it’s not going to rain: “umbrella” icon use /img/umbrella-false.png
+>>> When it’s going to rain: “umbrella” icon use /img/umbrella-True.png
+
+- What we use:
+>>> We use an array with two floats as parameters
+>>> We split the array into two separate variables to create a string literal
+>>> We use the string literal to request from the api
+>>> We take the daily part of the JSON
+>>> We store the data into the variable
+>>> We hardcoded the time conversion to convert PDT to UTC time zone
+>>> We check if the day time is exist in the data to set “umbrella” True or False\
+
+- Why we use:
+>>> We use DarkSky API so the user knows if he or she needs to take an umbrella
+>>> We use array as parameters because it can pack the information and pass it at once
+>>> We use the “umbrella” icon because umbrellas are associated with raining.
+
+
+-Associate Reminder Date-
+- Concept:
+>>> To allow the user to set a specific date they wished to be reminded of a specific reminder
+
+- Styling:
+>>> A drop down calendar is used to allow the user to pick a specific day month year to be reminded
+>>> An alert box is used to alert user of a reminder
+
+- What We Use:
+>>> The calendar date inputs placed in both the create reminder and edit reminder pages will give a string in the format of
+    “yyyy-mm-dd”
+>>> Backend code stores the preferred remind date as a string 
+>>> The backend code compares this remind date to the current date and returns a boolean of true if it is the same date
+>>> The index.ejs page, an if statement uses the stored boolean to  determined whether to remind the user of a reminder or
+    not and an alert box will pop up if the remindDate is the same as the currentDate
+>>> The if statement also checks for whether the task has been completed. If the task is completed the alert box will not
+    pop up
+
+- Why We Use:
+>>> This feature allows the user to set longer term reminders
+>>> By having an alert box pop up when the set remind date occurs we let the user know which reminder is supposed to be
+    occurring on the present day
+>>> Having the calendar date input in the edit page allows users to change the remind date after first creation of the
+    reminder
+
+
+
+
+-Day/Night Mode-
+- Concept:
+>>> Be able to toggle between two background images for the application (day mode and night mode)
+>>> When clicked on the background image will change accordingly
+>>> A moon will appear in night mode for the user to click to switch to day mode
+>>> A sun will appear in day mode for the user to click to switch to night mode
+>>> The body text will also change colour according to what mode/background the user chooses (pink for night mode and black
+    for day mode)
+
+- Styling:
+>>> The position of the moon and sun image is located on the bottom right corner of the screen and will adjust according to
+    browser size
+>>> The styling and sources was mentioned at the beginning of the document
+
+- What We Use:
+>>> Local storage was used to store the preference of background throughout the application
+>>> Front end javascript in the layout page was used to create a function that changes the background-image and the
+    clickable image onclick
+
+- Why We Use:
+>>> The code is placed in the layout.ejs page so that all pages of the application will have the same background throughout
+>>> The moon and sun images will also appear on all the pages because it exists in the layout page so the user can change
+    their preference at any time
+>>> Local storage is used to store the preference so the page preference isn’t lost when the user refreshes or leaves the
+    current page
+
+
+
+-(Fake) Authentication-
+- Concept:
+>>> User is able to create a new username and password that adds to the fake database
+>>> User is able to login with the current username and passwords stored in the current database
+>>> New users are not able to create new accounts with a username that already exists in the database
+>>> When the user presses the login button of the navigation bar a login modal will appear prompting the user for username
+    and password
+
+
+- Styling:
+>>> A login modal is used for the username and password inputs
+>>> The password input will appear as *** as the input type is styled by bootstrap type password
+>>> The bootstrap modal is taken from https://mdbootstrap.com/docs/jquery/modals/forms/?fbclid=IwAR3Ovwm88wi5UbzZcQ4q4qLQo65MXPgEa0NYsb9SQsA_QV_dagD0wMlHxUQ
+
+- What We Use:
+>>> Backend code is used to retrieve the input boxes or username and password
+>>> For registering:
+    - The username checks against the current usernames in the database and will not let the user create one that already
+      exists (not case sensitive)
+    - The password needs to be inputted two times and both must be exactly the same to create the new account (case
+      sensitive)
+    - On successful registration user’s username and password will be added to the database and can be used to login
+    - The username and password fields cannot be left empty
+    - A console log message will display indicating successful registration or the problem that occured
+>>> For logging in:
+    - The inputted username and password will be checked with the current fake database to see if it exists
+    - The username is not case sensitive
+    - The password is case sensitive
+    - A console log message will display indicating whether the user successfully logged in or not
+
+- Why We Use:
+>>> The console log messages are used to let the user know whether their attempt was successful
+>>> The usernames are modified to be lowercase to store in the database so that the usernames are not case sensitive
+>>> This feature simulates the functionality of creating a new user and being able to authenticate with the new created
+    credentials
+
+
+
+===Incomplete Features===
+-=Delete Selected Reminders=-
+>>> Intended to be able to select multiple reminders and delete all the selected ones when the button is pushed.
+>>> This feature is shown in the main index.ejs file within the bottom right-hand corner of the reminder box.
+>>> Uses the DOM to find all the selected elements with the class “custom-control-input”.
+>>> Use a for loop to select each reminder that was selected and use the remindersController.delete function on it to remove
+    the reminder from the database.
+>>> This feature does not work and has been commented out in the reminder_controller.js file.
+>>> With more time, the group could research the correct syntax required to implement this as it currently uses front-end
+    javascript in the backend.
+
+
+
+-=Reminder Subtasks=-
+>>> To be able to have subtasks associated with each reminder
+>>> During the creation of a reminder and the edit
+>>> With more time the team could have implemented this by creating another input element in the create.ejs page similar to
+    how the tags were created where the user can add as many subtasks as they want
+
+
+
+-=Real Database=-
+>>> The current backend code only writes to the cindy database 
+>>> The team did not have time to implement a real authentication to database experience
+>>> The current backend code does not currently integrate with the authentication functions to retrieve the specific user’s
+    database
+>>> Currently the authentication we have in place merely simulates the authentication experience
+>>> In theory if the tem had time to integrate the two, after authentication, all the backend code will switch to the user’s
+    specific database and retrieve all the stored reminders as well as be able to create new reminders and store them into
+    the specific user’s database
+>>> This would require time to rewrite the current functions for the backend code
+
+
+
+End of document
