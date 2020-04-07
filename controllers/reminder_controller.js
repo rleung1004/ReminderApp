@@ -34,10 +34,9 @@ let remindersController = {
     let tagDiv = req.body.tag;
     let tags = [];
     if (tagDiv) {
-      if (typeof (tagDiv) === 'string') {
+      if (typeof tagDiv === "string") {
         tags.push(tagDiv);
-      }
-      else {
+      } else {
         tagDiv.forEach(function (aTag) {
           aTag = aTag.trim();
           if (aTag != "") {
@@ -65,7 +64,7 @@ let remindersController = {
       weatherData.forEach((day) => {
         // hard coded conversion from PDT to UTC
         let convertedTime = day.time - 25200;
-        if ((convertedTime === time)) {
+        if (convertedTime === time) {
           if (
             day.icon === "rain" ||
             day.icon === "sleet" ||
@@ -85,11 +84,13 @@ let remindersController = {
     let reminderToFind = req.params.id;
     let searchResult = Database.cindy.reminders.find(function (reminder) {
       return reminder.id == reminderToFind;
-    })
-    var fs = require('fs');
-    let reminder = JSON.stringify(Database.cindy.reminders) // converts to string so it can be downloaded
-    fs.writeFileSync("test.txt", reminder, 'utf8', function (err) { console.log(err) }); // creates new file called test.txt and fills it with the contents of the reminders
-    res.download("test.txt", filename = "reminders.txt");  // downloads the file made in the last line with the name "reminders.txt"
+    });
+    var fs = require("fs");
+    let reminder = JSON.stringify(Database.cindy.reminders); // converts to string so it can be downloaded
+    fs.writeFileSync("test.txt", reminder, "utf8", function (err) {
+      console.log(err);
+    }); // creates new file called test.txt and fills it with the contents of the reminders
+    res.download("test.txt", (filename = "reminders.txt")); // downloads the file made in the last line with the name "reminders.txt"
   },
 
   import: (req, res) => {
@@ -121,10 +122,9 @@ let remindersController = {
         let tagDiv = req.body.tag;
         let tags = [];
         if (tagDiv) {
-          if (typeof (tagDiv) === 'string') {
+          if (typeof tagDiv === "string") {
             tags.push(tagDiv);
-          }
-          else {
+          } else {
             tagDiv.forEach(function (aTag) {
               aTag = aTag.trim();
               if (aTag != "") {
@@ -149,7 +149,7 @@ let remindersController = {
           weatherData.forEach((day) => {
             // hard coded conversion from PDT to UTC
             let convertedTime = day.time - 25200;
-            if ((convertedTime === time)) {
+            if (convertedTime === time) {
               if (
                 day.icon === "rain" ||
                 day.icon === "sleet" ||
@@ -202,21 +202,20 @@ let remindersController = {
   },
 
   authenticate: async (req, res) => {
-    let username = req.body.username
-    let password = req.body.password
+    let username = req.body.username;
+    let password = req.body.password;
     username = username.toLowerCase();
-    let user = Database[username]
+    let user = Database[username];
 
     if (user && password === user.password) {
-      res.redirect("/reminder")
-      console.log("successfullly logged in user: " + username)
-
-    } else if (password !== user.password){
+      res.redirect("/reminder");
+      console.log("successfullly logged in user: " + username);
+    } else if (password !== user.password) {
       res.redirect("/reminder/errorAuth");
-      console.log("username and password were incorrect!")
+      console.log("username and password were incorrect!");
     } else {
       res.redirect("/reminder/errorAuth");
-      console.log("user does not exist! Register for an account first!")
+      console.log("user does not exist! Register for an account first!");
     }
   },
 
@@ -227,22 +226,30 @@ let remindersController = {
     let secondPassword = req.body.newPasswordSecond;
     username = username.toLowerCase();
 
-    if (password == secondPassword && username !== "" && password !== "" && Database[username] === undefined) {
+    if (
+      password == secondPassword &&
+      username !== "" &&
+      password !== "" &&
+      Database[username] === undefined
+    ) {
       Database[username] = {
         reminders: [],
-        password: password
+        password: password,
       };
-      res.redirect("/reminder")
-      console.log("created new user!\nUsername: " + username + "\nPassword: " + password)
+      res.redirect("/reminder");
+      console.log(
+        "created new user!\nUsername: " + username + "\nPassword: " + password
+      );
     } else if (password !== secondPassword) {
       res.redirect("/reminder/errorAuth");
-      console.log("passwords were not the same! Try again!")
+      console.log("passwords were not the same! Try again!");
     } else {
       res.redirect("/reminder/errorAuth");
-      console.log("You did not register correctly! Username already taken! Try again!")
+      console.log(
+        "You did not register correctly! Username already taken! Try again!"
+      );
     }
-
-  }
+  },
 
   /* 
   // does not work... ask Armaan
