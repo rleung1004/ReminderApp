@@ -6,3 +6,8 @@ Ryan Leung A01204521
 - documentation
 - administrative work (maintaining the github repository, creating README file, LICENSE file, PlanOfAction documents)
 
+Kyrill Metalnikov A01081000
+- Download reminders functionality
+- Export reminders functionality
+- partial work on create/delete functions
+- partial work on documentation
