@@ -36,5 +36,5 @@ created promotional landing page: used bootstrap to create a landing page and co
 authentication: with the help of a team member I wrote and integrated the login functionalities of the login modal from the navigation bootstrap
 registration: created a function that allows user to register a new user name a password into the fake database and integrated it to the registration modal
 Helped team member with ejs: helped team meber integrate darkweather API into the application
-team leader/coordinator: performed tasks as the team leader
-documentation: worked as a team to write the documentation for the application
+Team leader/coordinator: performed tasks as the team leader
+Documentation: worked as a team to write the documentation for the application
