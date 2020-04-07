@@ -188,11 +188,29 @@ let remindersController = {
     
     if (user && password == user.password) {
         res.redirect("/reminder")
+        console.log("successfullly loged in user: " + username)
      
     } else {
       res.redirect("/reminder/errorAuth");
+      console.log("username and password were incorrect!")
     } 
-  
+  },
+
+  register: async (req, res) => {
+    let username = req.body.newUsername;
+    let password = req.body.newPassword;
+    let secondPassword = req.body.newPasswordSecond;
+
+    if (password == secondPassword) {
+      Database[username] = {reminders: [],
+                            password: password};
+                            res.redirect("/reminder")
+      console.log("created new user!\nUsername: " + username + "\nPassword: " + password)
+    } else {
+      res.redirect("/reminder/errorAuth");
+      console.log("passwords were not the same! Try again!")
+    }
+
   }
 
   /* 
