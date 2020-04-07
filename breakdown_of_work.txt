@@ -15,3 +15,7 @@ Kyrill Metalnikov A01081000
 Kyle Bulalakaw A01070070
 - Tag-related functions and ejs logic
 - Contributed to documentation
+
+Saida Song A01088305
+- Geolocation api logic
+- Documentation
