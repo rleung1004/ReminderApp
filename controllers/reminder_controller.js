@@ -123,7 +123,7 @@ let remindersController = {
 
         (reminder.title = req.body.title),
           (reminder.description = req.body.description),
-          (date = req.body.remindDate),
+          (reminder.remindDate = req.body.remindDate),
           // Why do you think I had to do req.body.completed == "true" below?
           (reminder.completed = req.body.completed == true);
 
