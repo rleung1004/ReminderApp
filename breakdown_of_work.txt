@@ -11,3 +11,7 @@ Kyrill Metalnikov A01081000
 - Export reminders functionality
 - partial work on create/delete functions
 - partial work on documentation
+
+Kyle Bulalakaw A01070070
+- Tag-related functions and ejs logic
+- Contributed to documentation
