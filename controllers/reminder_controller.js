@@ -118,6 +118,21 @@ let remindersController = {
     let reminderToFind = req.params.id;
     let searchResult = Database.cindy.reminders.find(function (reminder) {
       if (reminder.id == reminderToFind) {
+        let tagDiv = req.body.tag;
+        let tags = [];
+        if (tagDiv) {
+          if (typeof (tagDiv) === 'string') {
+            tags.push(tagDiv);
+          }
+          else {
+            tagDiv.forEach(function (aTag) {
+              aTag = aTag.trim();
+              if (aTag != "") {
+                tags.push(aTag);
+              }
+            });
+          }
+        }
         let date = new Date(reminder.remindDate);
         let time = String(date.getTime());
         time = time.substring(0, time.length - 3);
@@ -127,6 +142,7 @@ let remindersController = {
           (reminder.description = req.body.description),
           (reminder.remindDate = req.body.remindDate),
           // Why do you think I had to do req.body.completed == "true" below?
+          (reminder.tags = tags),
           (reminder.completed = req.body.completed == true);
 
         if (weatherData) {
