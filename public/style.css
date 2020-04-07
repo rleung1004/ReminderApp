@@ -45,6 +45,7 @@ div.card-header-tab.card-header {
 /* makes the scroll area of the box white */
 .scroll-area-sm {
   background-color: #fff;
+  color: black !important;
 }
 
 /* boot strap code*/
@@ -176,6 +177,7 @@ i {
   margin-bottom: -1px;
   background-color: #fff;
   border: 1px solid rgba(0, 0, 0, 0.125);
+  color: black !important;
 }
 
 .list-group {
@@ -289,3 +291,30 @@ i {
 .form-tag {
   color: black;
 }
+
+
+#import {
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  transform: translate(-50%);
+  
+}
+
+.import-content {
+  width: 30vw;
+  height: 20vh;
+}
+
+.import-button {
+  display: block;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+  color: black !important;
+}
+
+#reminder {
+  color: black !important;
+}
+

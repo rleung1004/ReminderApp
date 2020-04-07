@@ -15,3 +15,7 @@
 .navbar-nav>li>a {
     color: #f2dede !important;
 }
+
+.modal {
+    color: black !important;
+}
