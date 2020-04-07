@@ -42,6 +42,6 @@ app.post("/reminder/deleteSelected/:id", reminderController.deleteSelected) */
 
 app.listen(3000, function () {
   console.log(
-    "Server running. Visit: localhost:3001/reminder in your browser 🚀"
+    "Server running. Visit: localhost:3000/reminder in your browser 🚀"
   );
 });
