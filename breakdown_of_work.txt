@@ -19,3 +19,22 @@ Kyle Bulalakaw A01070070
 Saida Song A01088305
 - Geolocation api logic
 - Documentation
+
+
+Tasks Worked On:
+Task Name: (Ex - Designing Landing Page in Figma)
+Explanation - I spent time learning how to use figma and design a beautiful landing page for our application.
+
+
+Lucy Chan A01204885
+Tasks Worked On:
+Front End Design of Application: I designed the front end design elements of the application (app name, decided how it'll work, all the style elements)
+Integration of Front End with Back End: I wrote, and edited code to integrate the back end functionalities for all front end elements (add reminder, delete reminder, complete reminder, edit/update reminder)
+Implemented reminder date association to both the front end and back end: added an input calendar to both the create a reminder page and the edit a reminder page and integrated them to the backend reminder database
+Created logic for implementing a reminder to the user when the remind date they chose arises: implemented the logic in both front end and back end to have alerts reminding user a reminder is happening today
+created promotional landing page: used bootstrap to create a landing page and connected it to the base application
+authentication: with the help of a team member I wrote and integrated the login functionalities of the login modal from the navigation bootstrap
+registration: created a function that allows user to register a new user name a password into the fake database and integrated it to the registration modal
+Helped team member with ejs: helped team meber integrate darkweather API into the application
+team leader/coordinator: performed tasks as the team leader
+documentation: worked as a team to write the documentation for the application
