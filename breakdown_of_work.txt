@@ -1,0 +1,8 @@
+Ryan Leung A01204521
+- front end geolocation api integration
+- back end dark sky weather api integration
+- umbrella icon on index.ejs logic (getting the right image to show on right cases)
+- research on firebase authentication
+- documentation
+- administrative work (maintaining the github repository, creating README file, LICENSE file, PlanOfAction documents)
+
