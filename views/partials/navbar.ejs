@@ -50,22 +50,29 @@
           <div class="tab-pane fade in show active" id="panel7" role="tabpanel">
 
             <!--Body-->
-            <div class="modal-body mb-1">
-              <div class="md-form form-sm mb-5">
-                <i class="fas fa-envelope prefix"></i>
-                <input type="email" id="modalLRInput10" class="form-control form-control-sm validate">
-                <label data-error="wrong" data-success="right" for="modalLRInput10">Your email</label>
+            <form action="/reminder/authenticate", method="POST">
+              <div class="modal-body mb-1">
+                <div class="md-form form-sm mb-5">
+                  <i class="fas fa-envelope prefix"></i>
+                 
+                  <input type="text" id="modalLRInput10" name="username" class="form-control form-control-sm validate">
+                  <label data-error="wrong" data-success="right" for="modalLRInput10">Username</label>
+                </div>
+  
+                <div class="md-form form-sm mb-4">
+                  <i class="fas fa-lock prefix"></i>
+                  <input type="text" id="modalLRInput11" name="password" class="form-control form-control-sm validate">
+                  <label data-error="wrong" data-success="right" for="modalLRInput11">Your password</label>
+                </div>
+                <div class="text-center mt-2">
+  
+                  
+                  <button type="submit" class="btn btn-info">Log in <i class="fas fa-sign-in ml-1"></i></button>
+  
+                </div>
               </div>
-
-              <div class="md-form form-sm mb-4">
-                <i class="fas fa-lock prefix"></i>
-                <input type="password" id="modalLRInput11" class="form-control form-control-sm validate">
-                <label data-error="wrong" data-success="right" for="modalLRInput11">Your password</label>
-              </div>
-              <div class="text-center mt-2">
-                <a href="reminder"><button class="btn btn-info">Log in <i class="fas fa-sign-in ml-1"></i></button></a>
-              </div>
-            </div>
+            </form>
+            
             <!--Footer-->
             <div class="modal-footer">
               <div class="options text-center text-md-right mt-1">

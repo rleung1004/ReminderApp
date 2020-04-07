@@ -160,6 +160,20 @@ let remindersController = {
     res.json(weatherData);
   },
 
+  authenticate: async (req, res) => {
+    let username = req.body.username
+    let password = req.body.password
+    let user = Database[username]
+    
+    if (user && password == user.password) {
+        res.redirect("/reminder")
+     
+    } else {
+      res.redirect("/reminder/errorAuth");
+    } 
+  
+  }
+
   /* 
   // does not work... ask Armaan
   deleteSelected: (req, res) => {

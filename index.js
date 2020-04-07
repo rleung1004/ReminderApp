@@ -36,6 +36,7 @@ app.post("/reminder/complete/:id", reminderController.complete);
 
 app.get("/weather/:coordinates", reminderController.getWeatherData);
 
+app.post("/reminder/authenticate", reminderController.authenticate);
 /* /// does not work... ask Armaan
 app.post("/reminder/deleteSelected/:id", reminderController.deleteSelected) */
 
