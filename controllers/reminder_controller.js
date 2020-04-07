@@ -58,6 +58,21 @@ let remindersController = {
     res.redirect('/reminder');
   },
 
+  import: (req, res) => {
+    // let reminderToFind = req.params.id;
+    // let searchResult = Database.cindy.reminders.find(function(reminder) {
+    //   return reminder.id == reminderToFind;
+    // })
+    // console.log("I WAS CALLED");
+    // res.redirect('/reminder');
+    res.render('reminder/import');
+  },
+
+  importpost: (req, res) => {
+    let importContent = req.body;
+    Database.cindy.reminders.push(importContent[0]); 
+  },
+
   edit: (req, res) => {
     let reminderToFind = req.params.id;
     let searchResult = Database.cindy.reminders.find(function(reminder) {

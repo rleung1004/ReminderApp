@@ -1,1 +1,5 @@
+<<<<<<< Updated upstream
 []
+=======
+[{"id":1,"title":"adsfja;","description":"asjd;flkajs","remindDate":"2020-04-06","currentDate":true,"completed":false,"umbrella":false}]
+>>>>>>> Stashed changes

@@ -6,15 +6,33 @@ const reminderController = require("./controllers/reminder_controller");
 
 app.use(express.static(__dirname + "/public"))
 
+<<<<<<< Updated upstream
 app.use(express.urlencoded({ extended: false }))
+=======
+app.use(express.json());
+
+app.use(ejsLayouts);
+>>>>>>> Stashed changes
 
 app.use(ejsLayouts)
 
 app.set("view engine", "ejs")
 
 // Routes start here
+<<<<<<< Updated upstream
 
 app.get("/reminder", reminderController.list)
+=======
+
+// test
+
+app.get("/reminder/import", reminderController.import)
+
+app.post("/reminder/importpost", reminderController.importpost)
+
+
+app.get("/reminder/:id/download", reminderController.download)
+>>>>>>> Stashed changes
 
 app.get("/reminder/new", reminderController.new)
 
