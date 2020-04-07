@@ -35,6 +35,6 @@ Created logic for implementing a reminder to the user when the remind date they 
 Created promotional landing page: used bootstrap to create a landing page and connected it to the base application
 Authentication: with the help of a team member I wrote and integrated the login functionalities of the login modal from the navigation bootstrap
 Registration: created a function that allows user to register a new user name a password into the fake database and integrated it to the registration modal
-Helped team member with ejs: helped team meber integrate darkweather API into the application
+Helped team member with ejs: helped team member integrate darkweather API into the application
 Team leader/coordinator: performed tasks as the team leader
 Documentation: worked as a team to write the documentation for the application
