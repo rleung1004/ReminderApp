@@ -207,13 +207,16 @@ let remindersController = {
     username = username.toLowerCase();
     let user = Database[username]
 
-    if (user && password == user.password) {
+    if (user && password === user.password) {
       res.redirect("/reminder")
       console.log("successfullly logged in user: " + username)
 
-    } else {
+    } else if (password !== user.password){
       res.redirect("/reminder/errorAuth");
       console.log("username and password were incorrect!")
+    } else {
+      res.redirect("/reminder/errorAuth");
+      console.log("user does not exist! Register for an account first!")
     }
   },
 
