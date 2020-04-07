@@ -101,37 +101,7 @@
           </perfect-scrollbar>
         </div>
         <div class="d-block text-right card-footer">
-          <!-- Commenting this out as it doesn't work anyway
-          <form onsubmit="addToReminders()">
-            <label for="myfile">Import a txt file:</label>
-            <input type="file" id="myfile">
-            <input type="submit">
-          -->
-          </form>
-
-          <!--The following internal js is never being called.  I tried making the import work through an esj file, but I couldn't get it to connect to the
-          button.  The other issue I ran into is pushing the json file into the database.  I tried doing it the same way create reminder worked
-          but it did not work so I removed it.-->
-          <script>
-            function addToReminders(){
-              let file = document.getElementById("myfile").files[0];
-              let jsonFile = JSON.parse(file);
-              /* Following code taken off of stack overflow.  Minimum understanding.  <I couldn't get this code to work, I brought it back
-              to the stage it was in where it pseduo worked.  I got to the stage where it saw the contents of the text file as [object, object]
-              but I couldn't get it to actually import properly */
-              alert(file);  // this was used to see what was currently inside of file.
-              if (file) {
-                var reader = new FileReader();
-                reader.readAsText(file, "UTF-8");
-                reader.onload = function (evt) {
-                  alert("I read the file")
-                }
-                reader.onerror = function (evt) {
-                  alert("Error loading file");
-                }
-              }
-            }
-          </script>
+         
           <button type="submit" class="mr-2 btn btn-link btn-sm">Delete Selected</button>
 
 
