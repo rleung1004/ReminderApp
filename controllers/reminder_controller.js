@@ -201,7 +201,7 @@ let remindersController = {
     let password = req.body.newPassword;
     let secondPassword = req.body.newPasswordSecond;
 
-    if (password == secondPassword) {
+    if (password == secondPassword && username !== "" && password !== "") {
       Database[username] = {reminders: [],
                             password: password};
                             res.redirect("/reminder")
