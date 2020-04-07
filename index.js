@@ -7,6 +7,8 @@ app.use(express.static(__dirname + "/public"));
 
 app.use(express.urlencoded({ extended: false }));
 
+app.use(express.json());
+
 app.use(ejsLayouts);
 
 app.set("view engine", "ejs");
@@ -15,6 +17,9 @@ app.set("view engine", "ejs");
 
 // This route does not work right now
 // app.get("/reminder/import", reminderController.import)
+app.get("/reminder/import", reminderController.import)
+
+app.post("/reminder/importpost", reminderController.importpost)
 
 app.get("/reminder/:id/download", reminderController.download)
 
