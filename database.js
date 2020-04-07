@@ -5,7 +5,8 @@ let Database = {
         
     },
     alex: {
-        reminders: []
+        reminders: [],
+        password: "7896"
     } 
 }
 
