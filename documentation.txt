@@ -4,7 +4,7 @@ Documentation Booklet
 ---------------------
 
 
-===Project Purpose===
+=== Project Purpose ===
 The purpose of this project is to provide users with a simple, easy-to-use interface for setting personal reminders. The
 app will alert the user if their reminder is scheduled for the current day, and inform the user to “bring an umbrella” if
 rain is expected that day. The app can also export a list of reminders as a .txt file, which can then be imported back into
@@ -12,7 +12,7 @@ the app. Users can store all reminders locally to their browser, or create a use
 in a server database.
 
 
-===Contact Information===
+=== Contact Information ===
 -Kyle Bulalakaw-
 kbulalakaw2@my.bcit.ca
 
@@ -29,7 +29,7 @@ rleung95@my.bcit.ca
 ssong61@my.bcit.ca
 
 
-===Getting Started===
+=== Getting Started ===
 Welcome to using Remindoggo! The first thing you want to do when you clone this repository is to make sure you have node.js
 installed, and run “npm install” on the command line to install all the dependencies needed to run the application. When you
 first run the application, locally the domain is localhost:3000. Make sure that your port 3000 is not being used currently in
@@ -41,7 +41,7 @@ app is the import feature. To use the import feature, please copy the text found
 feature and paste it in the text area.
 
 
-===Design Document===
+=== Design Document ===
 -=Styling=-
 We use the Bootstrap library to style our app and landing page. We use https://startbootstrap.com/themes/creative/ as a
 template for our landing page. Most of the text uses Merriweather Sans font, and some smaller text elements use Merriweather
@@ -438,7 +438,7 @@ The “Export” page uses default HTML5 textarea and button styling.
 
 
 
-===Incomplete Features===
+=== Incomplete Features ===
 -=Delete Selected Reminders=-
 >>> Intended to be able to select multiple reminders and delete all the selected ones when the button is pushed.
 >>> This feature is shown in the main index.ejs file within the bottom right-hand corner of the reminder box.
@@ -465,10 +465,38 @@ The “Export” page uses default HTML5 textarea and button styling.
 >>> The current backend code does not currently integrate with the authentication functions to retrieve the specific user’s
     database
 >>> Currently the authentication we have in place merely simulates the authentication experience
->>> In theory if the tem had time to integrate the two, after authentication, all the backend code will switch to the user’s
+>>> In theory if the team had time to integrate the two, after authentication, all the backend code will switch to the user’s
     specific database and retrieve all the stored reminders as well as be able to create new reminders and store them into
     the specific user’s database
 >>> This would require time to rewrite the current functions for the backend code
+
+
+-=Social Reminders Functionality=-
+>>> Give users the ability to add other users as friends (or not).
+>>> Users would be able to share single or multiple reminders with mutual friends on the app.
+>>> Users in database would have two more keys: "friends" and "friend_requests".
+    - both are initialized as empty arrays
+>>> We would add a "Friends" header in the navbar that opens a new page.
+>>> The Friends page shows the user's current friends, pending (incoming) friend requests, and allows users to
+    search to add friends.
+>>> The Friends page would allow users to enter the username of their friend, and send an friend request with a
+    submit button.
+>>> Submitting refreshes the page and alerts the user:
+    a. if the username exists and has not received a friend request yet, alert "Friend request sent to <username>"
+    b. if the username exists and has already received a friend request, alert "Friend request to <username> pending"
+    c. if the username does not exist, alert "User not found!"
+    d. if the username exists and is already friends with the user, alert "You are already friends with <username>"
+>>> The username of the sender will be added to the recipient's "friend_requests"
+>>> The Friends page also shows pending friend requests, with buttons to either accept or reject, possibly on a
+    sidebar.
+    - Both options remove the username from the array, while accepting adds the user to "friends".
+>>> The Friends page has a div that lists all friends of the user, similar to how the List All page shows reminders.
+>>> Friends can be deleted from this list using an adjacent button.
+>>> On List All, would add another button below the reminder box ("Share") that opens a modal to select friends to
+    share with.
+>>> Single reminders can also be shared from their respective single-reminder page.
+>>> Sharing adds selected reminders to friends' "reminders" array.
+    - Optionally, would have a "shared_reminders" array that users can toggle to show or hide on List All.
 
 
 
