@@ -21,7 +21,7 @@
     "express-ejs-layouts": "^2.5.0",
     "method-override": "^3.0.0",
     "mongoose": "^5.9.6",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.7",
     "nodemon": "^2.0.2"
   },
   "devDependencies": {}
